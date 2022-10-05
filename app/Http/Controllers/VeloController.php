@@ -37,9 +37,9 @@ class VeloController extends Controller
      */
     public function store(Request $request)
     {
-        Velo::create($request->all());
+       Velo::create($request->all());
 
-        return back()->with('message', 'item stored successfully');
+       return redirect('/velo');
     }
 
     /**
@@ -75,7 +75,7 @@ class VeloController extends Controller
     {
         $velo->update($request->all());
 
-        return back()->with('message', 'item updated successfully');
+        return redirect('/velo');
     }
 
     /**

@@ -18,15 +18,12 @@ Route::get('/', function () {
     return view('base');
 });
 
-Route::get('/test', function () {
-    return view('test');
-});
-
-Route::get('/page2/{name}', function ($name) {
-    return'<h1>Welcome '.$name.'</h1>';
-});
-
-Route::get('/page3/{name?}', function ($name=null) {
-    return'<h1>Welcome '.$name.'</h1>';
-});
 Route::get('/velo',[VeloController::class, 'index']);
+
+Route::get('/velo/add',[VeloController::class, 'create']);
+
+Route::post('/velo/store',[VeloController::class, 'store']);
+Route::get('/editvelo/{velo}',[VeloController::class, 'edit']);
+Route::post('/updatevelo/{velo}',[VeloController::class, 'update']);
+
+Route::get('/velo/remove/{velo}',[VeloController::class, 'destroy']);
