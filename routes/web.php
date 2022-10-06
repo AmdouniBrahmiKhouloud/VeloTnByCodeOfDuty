@@ -37,5 +37,6 @@ Route::get('/balades/remove/{balade}',[BaladeController::class, 'destroy']);
 Route::get('/evenements',[EvenementController::class, 'index']);
 Route::get('/evenements/add',[EvenementController::class, 'create']);
 Route::post('/evenements/store',[EvenementController::class, 'store']);
-
-
+Route::get('/editevenement/{evenement}',[EvenementController::class, 'edit']);
+Route::post('/updateevenement/{evenement}',[EvenementController::class, 'update']);
+Route::get('/evenement/remove/{evenement}',[EvenementController::class, 'destroy']);

@@ -153,6 +153,13 @@
               </a>
             </li>
 
+            <li class="menu-item">
+                <a href="/evenements" class="menu-link">
+                  <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                  <div data-i18n="Analytics">Evenements</div>
+                </a>
+              </li>
+
           </ul>
         </aside>
         <!-- / Menu -->

@@ -62,19 +62,22 @@ class EvenementController extends Controller
      */
     public function edit(Evenement $evenement)
     {
-        //
+        return view('evenements.edit', compact('evenement'));
+
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateEvenementRequest  $request
+     * @param  \App\Http\Requests\Request  $request
      * @param  \App\Models\Evenement  $evenement
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateEvenementRequest $request, Evenement $evenement)
+    public function update(Request $request, Evenement $evenement)
     {
-        //
+        $evenement->update($request->all());
+
+        return redirect('/evenements');
     }
 
     /**
@@ -85,6 +88,8 @@ class EvenementController extends Controller
      */
     public function destroy(Evenement $evenement)
     {
-        //
+        $evenement->delete();
+
+        return back()->with('message', 'item deleted successfully');
     }
 }
