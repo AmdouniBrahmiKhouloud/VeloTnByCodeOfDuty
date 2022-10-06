@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VeloController;
 use App\Http\Controllers\BaladeController;
+use App\Http\Controllers\EvenementController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,4 +33,9 @@ Route::post('/balades/store',[BaladeController::class, 'store']);
 Route::get('/editbalade/{balade}',[BaladeController::class, 'edit']);
 Route::post('/updatebalade/{balade}',[BaladeController::class, 'update']);
 Route::get('/balades/remove/{balade}',[BaladeController::class, 'destroy']);
+
+Route::get('/evenements',[EvenementController::class, 'index']);
+Route::get('/evenements/add',[EvenementController::class, 'create']);
+Route::post('/evenements/store',[EvenementController::class, 'store']);
+
 
