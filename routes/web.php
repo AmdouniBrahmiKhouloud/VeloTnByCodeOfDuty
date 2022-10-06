@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VeloController;
+use App\Http\Controllers\AssociationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,3 +28,16 @@ Route::get('/editvelo/{velo}',[VeloController::class, 'edit']);
 Route::post('/updatevelo/{velo}',[VeloController::class, 'update']);
 
 Route::get('/velo/remove/{velo}',[VeloController::class, 'destroy']);
+
+
+//association
+
+Route::get('/association',[AssociationController::class, 'index']);
+
+Route::get('/association/add',[AssociationController::class, 'create']);
+Route::post('/association/store',[AssociationController::class, 'store']);
+
+Route::get('/editassociation/{association}',[AssociationController::class, 'edit']);
+Route::post('/updateAssocaiton/{association}',[AssociationController::class, 'update']);
+
+Route::get('/association/remove/{association}',[AssociationController::class, 'destroy']);
