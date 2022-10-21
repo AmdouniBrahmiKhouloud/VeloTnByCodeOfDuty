@@ -1,4 +1,4 @@
-@extends('base')
+@extends('layouts.base')
 
 @section('body')
 <div class="container-xxl flex-grow-1 container-p-y">
