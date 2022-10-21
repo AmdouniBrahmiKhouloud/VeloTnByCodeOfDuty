@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LocationController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VeloController;
 
@@ -15,18 +16,19 @@ use App\Http\Controllers\VeloController;
 */
 
 Route::get('/', function () {
-    return view('base');
+    return view('front.index');
 });
-
-Route::get('/test', function () {
-    return view('test');
+Route::get('/about', function () {
+    return view('front.about');
 });
-
-Route::get('/page2/{name}', function ($name) {
-    return'<h1>Welcome '.$name.'</h1>';
+Route::get('/contact', function () {
+    return view('front.contact');
 });
-
-Route::get('/page3/{name?}', function ($name=null) {
-    return'<h1>Welcome '.$name.'</h1>';
+Route::get('/cycle', function () {
+    return view('front.cycle');
+});
+Route::get('/news', function () {
+    return view('front.news');
 });
 Route::get('/velo',[VeloController::class, 'index']);
+Route::resource('location', LocationController::class);
