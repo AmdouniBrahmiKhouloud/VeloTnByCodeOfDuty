@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Balade;
+use App\Models\Velo;
 use Illuminate\Http\Request;
 
 class BaladeController extends Controller
@@ -26,7 +27,9 @@ class BaladeController extends Controller
      */
     public function create()
     {
-        return view('balades.create');
+        
+        $velos = Velo::whereNull('balade_id')->get();
+        return view('balades.create',compact('velos'));
     }
 
     /**
@@ -37,8 +40,19 @@ class BaladeController extends Controller
      */
     public function store(Request $request)
     {
-        Balade::create($request->all());
-
+        $balade = new Balade();
+        $balade->name = $request->all()['name'];
+        $balade->starting_hour = $request->all()['starting_hour'];
+        $balade->ending_hour = $request->all()['ending_hour'];
+        $balade->places = $request->all()['places'];
+        $balade->save();
+        foreach ($request->all()['velo'] as $velo_id) {
+            $velo = Velo::where('id',$velo_id)->get()[0];
+            $out = new \Symfony\Component\Console\Output\ConsoleOutput();
+            $out->writeln($balade);
+            $velo->balade_id = $balade->id ;
+            $velo->save();
+        }
         return redirect('/balades');
     }
 

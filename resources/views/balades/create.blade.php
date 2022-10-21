@@ -17,10 +17,19 @@
               <div class="row mb-3">
                 <label class="col-sm-2 col-form-label" for="basic-default-name">velo</label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" name="velo" id="basic-default-name" placeholder="Velo" />
+                <select class="select" multiple name="velo[]">
+                @foreach ($velos as $velo)
+                  <option value="{{$velo->id}}">{{$velo->reference}}</option>
+                @endforeach
+                </select>
                 </div>
               </div>
-
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-name">Name</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" name="name" id="basic-default-name" placeholder="Name" />
+                </div>
+              </div>
               <div class="row mb-3">
                 <label class="col-sm-2 col-form-label" for="basic-default-name">Starting hour</label>
                 <div class="col-sm-10">

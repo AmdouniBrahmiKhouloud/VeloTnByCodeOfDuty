@@ -9,7 +9,7 @@
       <table class="table">
         <thead class="table-light">
           <tr>
-            <th>Velo</th>
+            <th>name</th>
             <th>starting_houre</th>
             <th>ending_houre</th>
             <th>places</th>
@@ -19,7 +19,7 @@
         <tbody class="table-border-bottom-0">
             @foreach ($balades as $item)
                 <tr>
-                    <td> {{$item->velo}} </td>
+                    <td> {{$item->name}} </td>
                     <td> {{$item->starting_hour}} </td>
                     <td> {{$item->ending_hour}} </td>
                     <td> {{$item->places}} </td>
