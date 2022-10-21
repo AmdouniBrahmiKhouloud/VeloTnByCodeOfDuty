@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Velo;
 use Illuminate\Http\Request;
+use App\Models\Evenement;
 
-class VeloController extends Controller
+class EvenementController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,9 @@ class VeloController extends Controller
      */
     public function index()
     {
-        $velos = Velo::all();
+        $evenements = Evenement::all();
 
-        return view('velos.index', compact('velos'));
+        return view('evenements.index', compact('evenements'));
     }
 
     /**
@@ -26,67 +26,69 @@ class VeloController extends Controller
      */
     public function create()
     {
-        return view('velos.create');
+        return view('evenements.create');
+
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param  \App\Http\Requests\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-       Velo::create($request->all());
+        Evenement::create($request->all());
 
-       return redirect('/velo');
+        return redirect('/evenements');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Velo $velo
+     * @param  \App\Models\Evenement  $evenement
      * @return \Illuminate\Http\Response
      */
-    public function show(Velo $velo)
+    public function show(Evenement $evenement)
     {
-        return view('velos.show', compact('velo'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Velo $velo
+     * @param  \App\Models\Evenement  $evenement
      * @return \Illuminate\Http\Response
      */
-    public function edit(Velo $velo)
+    public function edit(Evenement $evenement)
     {
-        return view('velos.edit', compact('velo'));
+        return view('evenements.edit', compact('evenement'));
+
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  \App\Models\Velo $velo
+     * @param  \App\Http\Requests\Request  $request
+     * @param  \App\Models\Evenement  $evenement
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Velo $velo)
+    public function update(Request $request, Evenement $evenement)
     {
-        $velo->update($request->all());
+        $evenement->update($request->all());
 
-        return redirect('/velo');
+        return redirect('/evenements');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Velo $velo
+     * @param  \App\Models\Evenement  $evenement
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Velo $velo)
+    public function destroy(Evenement $evenement)
     {
-        $velo->delete();
+        $evenement->delete();
 
         return back()->with('message', 'item deleted successfully');
     }

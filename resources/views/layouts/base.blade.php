@@ -81,6 +81,27 @@
                       <div data-i18n="Layouts">Booking Cycles</div>
                   </a>
               </li>
+
+            <li class="menu-item">
+              <a href="/velo" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <div data-i18n="Analytics">Velos</div>
+              </a>
+            </li>
+
+            <li class="menu-item">
+                <a href="/evenements" class="menu-link">
+                  <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                  <div data-i18n="Analytics">Evenements</div>
+                </a>
+              </li>
+
+              <li class="menu-item">
+                <a href="/balades" class="menu-link">
+                  <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                  <div data-i18n="Analytics">Balades</div>
+                </a>
+              </li>
           </ul>
         </aside>
         <!-- / Menu -->

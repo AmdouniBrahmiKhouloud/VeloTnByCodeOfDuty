@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Velo;
+use App\Models\Balade;
 use Illuminate\Http\Request;
 
-class VeloController extends Controller
+class BaladeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,9 @@ class VeloController extends Controller
      */
     public function index()
     {
-        $velos = Velo::all();
+        $balades = Balade::all();
 
-        return view('velos.index', compact('velos'));
+        return view('balades.index', compact('balades'));
     }
 
     /**
@@ -26,7 +26,7 @@ class VeloController extends Controller
      */
     public function create()
     {
-        return view('velos.create');
+        return view('balades.create');
     }
 
     /**
@@ -37,56 +37,56 @@ class VeloController extends Controller
      */
     public function store(Request $request)
     {
-       Velo::create($request->all());
+        Balade::create($request->all());
 
-       return redirect('/velo');
+        return redirect('/balades');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Velo $velo
+     * @param  \App\Models\balade $balade
      * @return \Illuminate\Http\Response
      */
-    public function show(Velo $velo)
+    public function show(Balade $balade)
     {
-        return view('velos.show', compact('velo'));
+        return view('balades.show', compact('balade'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Velo $velo
+     * @param  \App\Models\balade $balade
      * @return \Illuminate\Http\Response
      */
-    public function edit(Velo $velo)
+    public function edit(Balade $balade)
     {
-        return view('velos.edit', compact('velo'));
+        return view('balades.edit', compact('balade'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @param  \App\Models\Velo $velo
+     * @param  \App\Models\balade $balade
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Velo $velo)
+    public function update(Request $request, Balade $balade)
     {
-        $velo->update($request->all());
+        $balade->update($request->all());
 
-        return redirect('/velo');
+        return redirect('/balades');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Velo $velo
+     * @param  \App\Models\balade $balade
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Velo $velo)
+    public function destroy(Balade $balade)
     {
-        $velo->delete();
+        $balade->delete();
 
         return back()->with('message', 'item deleted successfully');
     }
