@@ -2,6 +2,7 @@
 @section('title', 'Cycle')
 @section('Content')
     <!-- contact section start -->
+
     <div class="contact_section layout_padding">
         <div class="container">
             <div class="banner_section layout_padding">
@@ -22,6 +23,15 @@
 
                 <div class="contact_main">
                     <h1 class="request_text">Participation form</h1>
+                    @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                     <form method="POST" action="/participation/store">
                         @csrf
                         <input type="text"  name="eventID" hidden value={{$evenement->id}}>

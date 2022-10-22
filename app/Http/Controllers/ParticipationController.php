@@ -42,6 +42,12 @@ class ParticipationController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'nom' => 'required',
+            'prenom' => 'required',
+            'email' => 'required',
+            'phone' => 'required',
+        ]);
         Participation::create($request->all());
         return redirect('/participations');
     }

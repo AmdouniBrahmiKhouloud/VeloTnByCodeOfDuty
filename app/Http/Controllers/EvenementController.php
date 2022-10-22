@@ -34,10 +34,12 @@ class EvenementController extends Controller
     /**
      * Show the form for creating a new resource.
      *
+  * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
+
         return view('evenements.create');
 
     }
@@ -50,6 +52,16 @@ class EvenementController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'title' => 'required',
+            'date' => 'required|date|after:today',
+            'time_debut' => 'required|before:time_fin',
+            'time_fin' => 'required|after:time_debut',
+            'nbr_place' => 'required|gt:2',
+            'prix' => 'required|gte:0',
+            'image' => 'required',
+            'description'=> 'required',
+        ]);
 
         if ($request->hasFile('image')) {
 
@@ -101,7 +113,16 @@ class EvenementController extends Controller
      */
     public function update(Request $request, Evenement $evenement)
     {
-
+        $this->validate($request, [
+            'title' => 'required',
+            'date' => 'required|date|after:today',
+            'time_debut' => 'required|before:time_fin',
+            'time_fin' => 'required|after:time_debut',
+            'nbr_place' => 'required|gt:2',
+            'prix' => 'required|gte:0',
+            'image' => 'required',
+            'description'=> 'required',
+        ]);
         if ($request->hasFile('image')) {
 
 

@@ -12,6 +12,15 @@
             <h5 class="mb-0">Edit Evenement</h5>
           </div>
           <div class="card-body">
+            @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
             <form method="POST" action="/updateevenement/{{$evenement->id}}" enctype="multipart/form-data">
                 @csrf
               <div class="row mb-3">
@@ -46,13 +55,6 @@
                 <label class="col-sm-2 col-form-label" for="basic-default-name">Nombre de places</label>
                 <div class="col-sm-10">
                   <input type="text" class="form-control" name="nbr_place" value="{{$evenement->nbr_place}}" id="basic-default-name" placeholder="Nombre de place" />
-                </div>
-              </div>
-
-              <div class="row mb-3">
-                <label class="col-sm-2 col-form-label" for="basic-default-name">Nombre de participant</label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" name="nbr_participant" value="{{$evenement->nbr_participant}}" id="basic-default-name" placeholder="Nombre de participant" />
                 </div>
               </div>
 
