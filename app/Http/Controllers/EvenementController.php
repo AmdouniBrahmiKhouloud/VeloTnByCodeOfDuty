@@ -38,7 +38,21 @@ class EvenementController extends Controller
      */
     public function store(Request $request)
     {
-        Evenement::create($request->all());
+
+        if ($request->hasFile('image')) {
+
+
+            $request->validate([
+                'image' => 'mimes:jpeg,bmp,png' // Only allow .jpg, .bmp and .png file types.
+            ]);
+            $imageName = time().'.'.$request->image->extension();
+            // Save the file locally in the storage/public/ folder under a new folder named /product
+            $request->image->move(public_path('images'), $imageName);
+
+
+            Evenement::create([...$request->all(), "image" => $imageName]);
+        }
+
 
         return redirect('/evenements');
     }
@@ -75,7 +89,22 @@ class EvenementController extends Controller
      */
     public function update(Request $request, Evenement $evenement)
     {
-        $evenement->update($request->all());
+
+        if ($request->hasFile('image')) {
+
+
+            $request->validate([
+                'image' => 'mimes:jpeg,bmp,png' // Only allow .jpg, .bmp and .png file types.
+            ]);
+            $imageName = time().'.'.$request->image->extension();
+            // Save the file locally in the storage/public/ folder under a new folder named /product
+            $request->image->move(public_path('images'), $imageName);
+            $evenement->update([...$request->all(), "image" => $imageName]);
+        }
+        else{
+            $evenement->update($request->all());
+
+        }
 
         return redirect('/evenements');
     }

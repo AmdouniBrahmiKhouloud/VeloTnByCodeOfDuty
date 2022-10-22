@@ -12,7 +12,7 @@
             <h5 class="mb-0">Edit Evenement</h5>
           </div>
           <div class="card-body">
-            <form method="POST" action="/updateevenement/{{$evenement->id}}">
+            <form method="POST" action="/updateevenement/{{$evenement->id}}" enctype="multipart/form-data">
                 @csrf
               <div class="row mb-3">
                 <label class="col-sm-2 col-form-label" for="basic-default-name">title</label>
@@ -63,12 +63,20 @@
                 </div>
               </div>
 
+
               <div class="row mb-3">
-                <label class="col-sm-2 col-form-label" for="basic-default-name">Descriptiont</label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" name="description" value="{{$evenement->description}}" id="basic-default-name" placeholder="description" />
+                  <label class="col-sm-2 col-form-label" for="basic-default-name">Descriptiont</label>
+                  <div class="col-sm-10">
+                      <input type="text" class="form-control" name="description" value="{{$evenement->description}}" id="basic-default-name" placeholder="description" />
+                    </div>
                 </div>
-              </div>
+
+                <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label" for="basic-default-name">Image</label>
+                  <div class="col-sm-10">
+                    <input type="file" name="image" value="/images/{{$evenement->image}}">
+                  </div>
+                </div>
 
               <div class="row justify-content-end">
                 <div class="col-sm-10">

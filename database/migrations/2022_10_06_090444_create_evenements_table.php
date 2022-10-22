@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string("nbr_place");
             $table->string("prix");
             $table->string("description");
+            $table->string("image");
             $table->timestamps();
         });
     }

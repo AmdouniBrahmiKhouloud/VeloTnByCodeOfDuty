@@ -18,6 +18,7 @@
             <th>nombre participant</th>
             <th>prix</th>
             <th>description</th>
+            <th>image</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -33,6 +34,7 @@
                     <td> {{$item->nbr_place}} </td>
                     <td> {{$item->prix}} </td>
                     <td> {{$item->description}} </td>
+                    <td> <img src="/images/{{$item->image}}" width="50" height="50" /> </td>
                     <td>
                         <a class="" href="/editevenement/{{$item->id}}"
                         ><i class="bx bx-edit-alt me-1"></i></a
