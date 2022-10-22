@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Velo;
+use App\Models\Magasin;
+use App\Models\Model_Velo;
 use Illuminate\Http\Request;
 
 class VeloController extends Controller
@@ -26,7 +28,10 @@ class VeloController extends Controller
      */
     public function create()
     {
-        return view('velos.create');
+        $models = Model_Velo::all();
+        $magasins = Magasin::all();
+
+        return view('velos.create',compact('models'),compact('magasins'));
     }
 
     /**
@@ -37,7 +42,27 @@ class VeloController extends Controller
      */
     public function store(Request $request)
     {
-       Velo::create($request->all());
+        $this->validate($request, [
+            'reference' => 'required',
+            'price' => 'required',
+            'description' => 'required',
+            'nbr_place' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg'
+        ]);
+       
+       $file= $request->file('image');
+       $filename= date('YmdHi').$file->getClientOriginalName();
+       $file-> move(public_path('images'), $filename);
+       $data = [] ;
+       $data['reference'] = $request->all()['reference'];
+       $data['price'] = $request->all()['price'];
+       $data['description'] = $request->all()['description'];
+       $data['nbr_place'] = $request->all()['nbr_place'];
+       $data['magasin_id'] = $request->all()['magasin'];
+       $data['model_id'] = $request->all()['model'];
+       $data['image'] = $filename;
+
+       Velo::create($data);
 
        return redirect('/velo');
     }
@@ -61,7 +86,9 @@ class VeloController extends Controller
      */
     public function edit(Velo $velo)
     {
-        return view('velos.edit', compact('velo'));
+        $models = Model_Velo::all();
+        $magasins = Magasin::all();
+        return view('velos.edit',compact('velo','models', 'magasins'));
     }
 
     /**
@@ -73,7 +100,26 @@ class VeloController extends Controller
      */
     public function update(Request $request, Velo $velo)
     {
-        $velo->update($request->all());
+        $this->validate($request, [
+            'reference' => 'required',
+            'price' => 'required',
+            'description' => 'required',
+            'nbr_place' => 'required',
+        ]);
+        $file= $request->file('image');
+        if ($file) {
+            $filename= date('YmdHi').$file->getClientOriginalName();
+            $file-> move(public_path('images'), $filename);
+            $velo->image = $filename;
+        }
+
+        $velo->reference = $request->all()['reference'];
+        $velo->price = $request->all()['price'];
+        $velo->description = $request->all()['description'];
+        $velo->nbr_place = $request->all()['nbr_place'];
+        $velo->magasin_id = $request->all()['magasin'];
+        $velo->model_id = $request->all()['model'];
+        $velo->save();
 
         return redirect('/velo');
     }

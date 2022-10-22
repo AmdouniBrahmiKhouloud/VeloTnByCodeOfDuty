@@ -82,6 +82,20 @@
                   </a>
               </li>
 
+              <li class="menu-item">
+                <a href="/magasins" class="menu-link">
+                  <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                  <div data-i18n="Analytics">Magasins</div>
+                </a>
+              </li>
+
+              <li class="menu-item">
+                <a href="/models" class="menu-link">
+                  <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                  <div data-i18n="Analytics">Models</div>
+                </a>
+              </li>
+
             <li class="menu-item">
               <a href="/velo" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
