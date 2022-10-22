@@ -19,6 +19,18 @@ class EvenementController extends Controller
         return view('evenements.index', compact('evenements'));
     }
 
+        /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function list()
+    {
+        $evenements = Evenement::all();
+
+        return view('front.events', compact('evenements'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *

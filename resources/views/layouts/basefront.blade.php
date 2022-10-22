@@ -15,28 +15,28 @@
     <meta name="author" content="">
     <link rel="icon" href="assetsFront/images/logo.png">
     <!-- bootstrap css -->
-    <link rel="stylesheet" type="text/css" href="assetsFront/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('assetsFront/css/bootstrap.min.css')}}">
     <!-- style css -->
-    <link rel="stylesheet" type="text/css" href="assetsFront/css/style.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('assetsFront/css/style.css')}}">
     <!-- Responsive-->
-    <link rel="stylesheet" href="assetsFront/css/responsive.css">
+    <link rel="stylesheet" href="{{asset('assetsFront/css/responsive.css')}}">
     <!-- fevicon -->
-    <link rel="icon" href="assetsFront/images/fevicon.png" type="image/gif" />
+    <link rel="icon" href="{{asset('assetsFront/images/fevicon.png')}}" type="image/gif" />
     <!-- Scrollbar Custom CSS -->
-    <link rel="stylesheet" href="assetsFront/css/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="{{asset('assetsFront/css/jquery.mCustomScrollbar.min.css')}}">
     <!-- Tweaks for older IEs-->
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
     <!-- owl stylesheets -->
     <link href="https://fonts.googleapis.com/css?family=Poppins:400,700|Raleway:400,700,800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assetsFront/css/owl.carousel.min.css">
-    <link rel="stylesoeet" href="assetsFront/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="{{asset('assetsFront/css/owl.carousel.min.css')}}">
+    <link rel="stylesoeet" href="{{asset('assetsFront/css/owl.theme.default.min.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
 </head>
 <body>
 <!-- header section start -->
 <div class="header_section header_bg">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a href="{{ url('/') }}" class="logo"><img src="assetsFront/images/logo.png"></a>
+        <a href="{{ url('/') }}" class="logo"><img src="{{asset('assetsFront/images/logo.png')}}"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -58,6 +58,9 @@
                     <a class="nav-link" href="{{ url('/news') }}">News</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="{{ url('/events') }}">Evenements</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="{{ url('/contact') }}">Contact Us</a>
                 </li>
             </ul>
@@ -65,15 +68,15 @@
                 <div class="login_menu">
                     <ul>
                         <li><a href="#">Login</a></li>
-                        <li><a href="#"><img src="assetsFront/images/trolly-icon.png"></a></li>
-                        <li><a href="#"><img src="assetsFront/images/search-icon.png"></a></li>
+                        <li><a href="#"><img src="{{asset('assetsFront/images/trolly-icon.png')}}"></a></li>
+                        <li><a href="#"><img src="{{asset('assetsFront/images/search-icon.png')}}"></a></li>
                     </ul>
                 </div>
                 <div></div>
             </form>
         </div>
         <div id="main">
-            <span style="font-size:36px;cursor:pointer; color: #fff" onclick="openNav()"><img src="assetsFront/images/toggle-icon.png" style="height: 30px;"></span>
+<span style="font-size:36px;cursor:pointer; color: #fff" onclick="openNav()"><img src="{{asset('assetsFront/images/toggle-icon.png')}}" style="height: 30px;"></span>
         </div>
     </nav>
     <!-- banner section start -->
@@ -85,7 +88,7 @@
                         <div class="row">
                             <div class="col-md-7">
                                 <div class="best_text">Best</div>
-                                <div class="image_1"><img src="assetsFront/images/img-1.png"></div>
+                                <div class="image_1"><img src="{{asset('assetsFront/images/img-1.png')}}"></div>
                             </div>
                             <div class="col-md-5">
                                 <h1 class="banner_taital">New Model Cycle</h1>
@@ -100,7 +103,7 @@
                         <div class="row">
                             <div class="col-md-7">
                                 <div class="best_text">Best</div>
-                                <div class="image_1"><img src="assetsFront/images/img-1.png"></div>
+                                <div class="image_1"><img src="{{asset('assetsFront/images/img-1.png')}}"></div>
                             </div>
                             <div class="col-md-5">
                                 <h1 class="banner_taital">New Model Cycle</h1>
@@ -115,7 +118,7 @@
                         <div class="row">
                             <div class="col-md-7">
                                 <div class="best_text">Best</div>
-                                <div class="image_1"><img src="assetsFront/images/img-1.png"></div>
+                                <div class="image_1"><img src="{{asset('assetsFront/images/img-1.png')}}"></div>
                             </div>
                             <div class="col-md-5">
                                 <h1 class="banner_taital">New Model Cycle</h1>
@@ -154,15 +157,15 @@
                 </div>
             </div>
             <div class="col-lg-4 col-sm-12">
-                <div class="call_text"><a href="#"><img src="assetsFront/images/map-icon.png"><span class="padding_left_0">Page when looking at its layou</span></a></div>
-                <div class="call_text"><a href="#"><img src="assetsFront/images/call-icon.png"><span class="padding_left_0">Call Now  +01 123467890</span></a></div>
-                <div class="call_text"><a href="#"><img src="assetsFront/images/mail-icon.png"><span class="padding_left_0">demo@gmail.com</span></a></div>
+                <div class="call_text"><a href="#"><img src="{{asset('assetsFront/images/map-icon.png')}}"><span class="padding_left_0">Page when looking at its layou</span></a></div>
+                <div class="call_text"><a href="#"><img src="{{asset('assetsFront/images/call-icon.png')}}"><span class="padding_left_0">Call Now  +01 123467890</span></a></div>
+                <div class="call_text"><a href="#"><img src="{{asset('assetsFront/images/mail-icon.png')}}"><span class="padding_left_0">demo@gmail.com</span></a></div>
                 <div class="social_icon">
                     <ul>
-                        <li><a href="#"><img src="assetsFront/images/fb-icon1.png"></a></li>
-                        <li><a href="#"><img src="assetsFront/images/twitter-icon.png"></a></li>
-                        <li><a href="#"><img src="assetsFront/images/linkedin-icon.png"></a></li>
-                        <li><a href="#"><img src="assetsFront/images/instagram-icon.png"></a></li>
+                        <li><a href="#"><img src="{{asset('assetsFront/images/fb-icon1.png')}}"></a></li>
+                        <li><a href="#"><img src="{{asset('assetsFront/images/twitter-icon.png')}}"></a></li>
+                        <li><a href="#"><img src="{{asset('assetsFront/images/linkedin-icon.png')}}"></a></li>
+                        <li><a href="#"><img src="{{asset('assetsFront/images/instagram-icon.png')}}"></a></li>
                     </ul>
                 </div>
                 <input type="text" class="email_text" placeholder="Enter Your Email" name="Enter Your Email">
@@ -184,16 +187,16 @@
 </div>
 <!-- copyright section end -->
 <!-- Javascript files-->
-<script src="assetsFront/js/jquery.min.js"></script>
-<script src="assetsFront/js/popper.min.js"></script>
-<script src="assetsFront/js/bootstrap.bundle.min.js"></script>
-<script src="assetsFront/js/jquery-3.0.0.min.js"></script>
-<script src="assetsFront/js/plugin.js"></script>
+<script src="{{asset('assetsFront/js/jquery.min.js')}}"></script>
+<script src="{{asset('assetsFront/js/popper.min.js')}}"></script>
+<script src="{{asset('assetsFront/js/bootstrap.bundle.min.js')}}"></script>
+<script src="{{asset('assetsFront/js/jquery-3.0.0.min.js')}}"></script>
+<script src="{{asset('assetsFront/js/plugin.js')}}"></script>
 <!-- sidebar -->
-<script src="assetsFront/js/jquery.mCustomScrollbar.concat.min.js"></script>
-<script src="assetsFront/js/custom.js"></script>
+<script src="{{asset('assetsFront/js/jquery.mCustomScrollbar.concat.min.js')}}"></script>
+<script src="{{asset('assetsFront/js/custom.js')}}"></script>
 <!-- javascript -->
-<script src="assetsFront/js/owl.carousel.js"></script>
+<script src="{{asset('assetsFront/js/owl.carousel.js')}}"></script>
 <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
 <script>
     function openNav() {

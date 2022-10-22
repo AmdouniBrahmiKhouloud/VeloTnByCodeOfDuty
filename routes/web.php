@@ -7,6 +7,7 @@ use App\Http\Controllers\AssociationController;
 
 use App\Http\Controllers\BaladeController;
 use App\Http\Controllers\EvenementController;
+use App\Http\Controllers\ParticipationController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -70,3 +71,6 @@ Route::post('/evenements/store',[EvenementController::class, 'store']);
 Route::get('/editevenement/{evenement}',[EvenementController::class, 'edit']);
 Route::post('/updateevenement/{evenement}',[EvenementController::class, 'update']);
 Route::get('/evenement/remove/{evenement}',[EvenementController::class, 'destroy']);
+Route::get('/events',[EvenementController::class, 'list']);
+Route::post('/participation/store',[ParticipationController::class, 'store']);
+Route::get('/participer/{evenement}',[ParticipationController::class, 'create']);
