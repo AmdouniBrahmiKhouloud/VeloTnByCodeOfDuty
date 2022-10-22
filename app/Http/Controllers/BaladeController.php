@@ -156,4 +156,11 @@ class BaladeController extends Controller
 
         return back()->with('message', 'item deleted successfully');
     }
+
+    public function indexFront()
+    {
+        $balades = Balade::all();
+
+        return view('front.balade', compact('balades'));
+    }
 }

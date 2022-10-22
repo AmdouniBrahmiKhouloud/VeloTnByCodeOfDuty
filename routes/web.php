@@ -51,6 +51,7 @@ Route::post('/balades/store',[BaladeController::class, 'store']);
 Route::get('/editbalade/{balade}',[BaladeController::class, 'edit']);
 Route::post('/updatebalade/{balade}',[BaladeController::class, 'update']);
 Route::get('/balades/remove/{balade}',[BaladeController::class, 'destroy']);
+Route::get('/baladesFront',[BaladeController::class, 'indexFront']);
 
 Route::get('/programmes',[ProgrammeController::class, 'index']);
 Route::get('/programmes/add',[ProgrammeController::class, 'create']);
