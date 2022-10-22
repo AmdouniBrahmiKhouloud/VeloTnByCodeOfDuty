@@ -17,7 +17,12 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('name');
-            $table->string('category');
+            $table->string('type');
+            $table->string('email');
+            $table->string('adress');
+            $table->integer('phone');
+
+
         });
     }
 

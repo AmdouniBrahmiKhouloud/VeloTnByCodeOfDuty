@@ -37,9 +37,11 @@ Route::get('/contact', function () {
 Route::get('/cycle', function () {
     return view('front.cycle');
 });
-Route::get('/news', function () {
-    return view('front.news');
-});
+
+Route::get('/news',[\App\Http\Controllers\PostController::class, 'index']);
+
+
+
 Route::resource('location', LocationController::class);
 
 Route::get('/velo',[VeloController::class, 'index']);
@@ -79,18 +81,25 @@ Route::post('/updateprogramme/{programme}',[ProgrammeController::class, 'update'
 Route::get('/programmes/remove/{programme}',[ProgrammeController::class, 'destroy']);
 
 
-
 //association
 
 Route::get('/association',[AssociationController::class, 'index']);
-
 Route::get('/association/add',[AssociationController::class, 'create']);
 Route::post('/association/store',[AssociationController::class, 'store']);
-
 Route::get('/editassociation/{association}',[AssociationController::class, 'edit']);
 Route::post('/updateAssocaiton/{association}',[AssociationController::class, 'update']);
-
 Route::get('/association/remove/{association}',[AssociationController::class, 'destroy']);
+Route::get('/associationaddMember/{association}',[AssociationController::class, 'ShowMembersList'])->name("searchUserAssociation");
+Route::get('/SearchMembers/{association}',[AssociationController::class, 'SearchMembersFilter'])->name("SearchMembersFilter");
+Route::get('/addSelectedUserToAssociation/{association}/{user_id}',[AssociationController::class, 'addSelectedUserToAssociation']);
+Route::get('/listUsersPerAsssociation/{association}',[AssociationController::class, 'listUsersPerAsssociation']);
+
+//posts
+Route::get('/postadd/{association}',[\App\Http\Controllers\PostController::class, 'create']);
+Route::post('/poststore/{association}',[\App\Http\Controllers\PostController::class, 'store']);
+
+
+
 Route::get('/evenements',[EvenementController::class, 'index']);
 Route::get('/evenements/add',[EvenementController::class, 'create']);
 Route::post('/evenements/store',[EvenementController::class, 'store']);
