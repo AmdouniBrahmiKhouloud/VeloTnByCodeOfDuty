@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Magasin;
+use App\Models\Model_Velo;
 use Illuminate\Http\Request;
 
-class MagasinController extends Controller
+class ModelVeloController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,9 @@ class MagasinController extends Controller
      */
     public function index()
     {
-        $magasins = Magasin::all();
+        $model_Velos = Model_Velo::all();
 
-        return view('magasins.index', compact('magasins'));
+        return view('model_Velos.index', compact('model_Velos'));
     }
 
     /**
@@ -26,8 +26,7 @@ class MagasinController extends Controller
      */
     public function create()
     {
-
-        return view('magasins.create');
+        return view('model_Velos.create');
     }
 
     /**
@@ -40,62 +39,60 @@ class MagasinController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
-            'location'  => 'required',
         ]);
-        Magasin::create($request->all());
+        Model_Velo::create($request->all());
 
-        return redirect('/magasins');
+        return redirect('/models');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Magasin $magasin
+     * @param  \App\Models\Model_Velo $model_Velo
      * @return \Illuminate\Http\Response
      */
-    public function show(Magasin $magasin)
+    public function show(Model_Velo $model_Velo)
     {
-        return view('magasins.show', compact('magasin'));
+        return view('model_Velos.show', compact('model_Velo'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Magasin $magasin
+     * @param  \App\Models\Model_Velo $model_Velo
      * @return \Illuminate\Http\Response
      */
-    public function edit(Magasin $magasin)
+    public function edit(Model_Velo $model_Velo)
     {
-        return view('magasins.edit', compact('magasin'));
+        return view('model_Velos.edit', compact('model_Velo'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @param  \App\Models\Magasin $magasin
+     * @param  \App\Models\Model_Velo $model_Velo
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Magasin $magasin)
+    public function update(Request $request, Model_Velo $model_Velo)
     {
         $this->validate($request, [
             'name' => 'required',
-            'location'  => 'required',
         ]);
-        $magasin->update($request->all());
+        $model_Velo->update($request->all());
 
-        return redirect('/magasins');
+        return redirect('/models');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Magasin $magasin
+     * @param  \App\Models\Model_Velo $model_Velo
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Magasin $magasin)
+    public function destroy(Model_Velo $model_Velo)
     {
-        $magasin->delete();
+        $model_Velo->delete();
 
         return back()->with('message', 'item deleted successfully');
     }

@@ -13,10 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('magasins', function (Blueprint $table) {
+        Schema::create('model__velos', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('location');
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('magasins');
+        Schema::dropIfExists('model__velos');
     }
 };
