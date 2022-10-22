@@ -46,12 +46,9 @@
               </div>
 
               <div class="row mb-3">
-                <label class="col-sm-2 col-form-label" for="basic-default-name">Color</label>
+                <label class="col-sm-2 col-form-label" for="basic-default-name">description</label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control @error('color') is-invalid @enderror" name="color" id="basic-default-name" placeholder="Color" />
-                  @error('color')
-                  <div class="error">{{$message }}</div>
-                  @enderror
+                <textarea rows="4" class="form-control"" name="description" style="resize:none, "> </textarea>
                 </div>
               </div>
 

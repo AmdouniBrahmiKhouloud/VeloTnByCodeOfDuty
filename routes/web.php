@@ -8,6 +8,9 @@ use App\Http\Controllers\MagasinController;
 use App\Http\Controllers\ModelVeloController;
 use App\Http\Controllers\BaladeController;
 use App\Http\Controllers\EvenementController;
+use App\Models\Velo;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,7 +23,8 @@ use App\Http\Controllers\EvenementController;
 */
 
 Route::get('/', function () {
-    return view('front.index');
+    $velos = Velo::all();
+    return view('front.index',compact('velos'));
 });
 
 Route::get('/about', function () {

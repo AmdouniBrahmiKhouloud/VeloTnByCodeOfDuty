@@ -17,7 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('reference');
             $table->string('price');
-            $table->string('color');
+            $table->string('image');
+            $table->string('description');
             $table->string('nbr_place');
             $table->unsignedBigInteger('balade_id')->nullable();
             $table->foreign('balade_id')->references('id')->on('balades')->onDelete('set null');

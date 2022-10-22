@@ -45,7 +45,7 @@ class VeloController extends Controller
         $this->validate($request, [
             'reference' => 'required',
             'price' => 'required',
-            'color' => 'required',
+            'description' => 'required',
             'nbr_place' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg'
         ]);
@@ -56,7 +56,7 @@ class VeloController extends Controller
        $data = [] ;
        $data['reference'] = $request->all()['reference'];
        $data['price'] = $request->all()['price'];
-       $data['color'] = $request->all()['color'];
+       $data['description'] = $request->all()['description'];
        $data['nbr_place'] = $request->all()['nbr_place'];
        $data['magasin_id'] = $request->all()['magasin'];
        $data['model_id'] = $request->all()['model'];
@@ -103,7 +103,7 @@ class VeloController extends Controller
         $this->validate($request, [
             'reference' => 'required',
             'price' => 'required',
-            'color' => 'required',
+            'description' => 'required',
             'nbr_place' => 'required',
         ]);
         $file= $request->file('image');
@@ -115,7 +115,7 @@ class VeloController extends Controller
 
         $velo->reference = $request->all()['reference'];
         $velo->price = $request->all()['price'];
-        $velo->color = $request->all()['color'];
+        $velo->description = $request->all()['description'];
         $velo->nbr_place = $request->all()['nbr_place'];
         $velo->magasin_id = $request->all()['magasin'];
         $velo->model_id = $request->all()['model'];
