@@ -13,7 +13,7 @@
           </div>
           <div class="card-body">
             <form method="post" action="/updateAssocaiton/{{$association->id}}">
-                @csrf 
+                @csrf
               <div class="row mb-3">
                 <label class="col-sm-2 col-form-label" for="basic-default-name">name</label>
                 <div class="col-sm-10">
@@ -22,14 +22,42 @@
               </div>
 
               <div class="row mb-3">
-                <label class="col-sm-2 col-form-label" for="basic-default-name">category</label>
+                <label class="col-sm-2 col-form-label" for="basic-default-name">type</label>
                 <div class="col-sm-10">
-                  <input type="text" value="{{$association->category}}" class="form-control" name="category" id="basic-default-name" placeholder="Type" />
+                  <input type="text" value="{{$association->type}}" class="form-control" name="type" id="basic-default-name" placeholder="Type" />
                 </div>
               </div>
 
-           
-              <div class="row justify-content-end">
+                <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label" for="basic-default-name">email</label>
+                    <div class="col-sm-10">
+                        <input type="text" value="{{$association->email}}" class="form-control" name="email" id="basic-default-name" placeholder="Type" />
+                    </div>
+                </div>
+
+
+                <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label" for="basic-default-name">type</label>
+                    <div class="col-sm-10">
+                        <input type="text" value="{{$association->type}}" class="form-control" name="type" id="basic-default-name" placeholder="Type" />
+                    </div>
+                </div>
+
+
+                <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label" for="basic-default-name">adress</label>
+                    <div class="col-sm-10">
+                        <input type="text" value="{{$association->adress}}" class="form-control" name="adress" id="basic-default-name" placeholder="Type" />
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label" for="basic-default-name">phone</label>
+                    <div class="col-sm-10">
+                        <input type="text" value="{{$association->phone}}" class="form-control" name="phone" id="basic-default-name" placeholder="Type" />
+                    </div>
+                </div>
+
+                <div class="row justify-content-end">
                 <div class="col-sm-10">
                   <button type="submit"  class="btn btn-primary">Send</button>
                 </div>
