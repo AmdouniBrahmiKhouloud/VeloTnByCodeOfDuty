@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('description');
             $table->string('pointDepart');
             $table->integer('distance');
+            $table->string('image');
             $table->unsignedBigInteger('balade_id')->nullable();
             $table->foreign('balade_id')->references('id')->on('balades')->onDelete('set null');
             $table->timestamps();

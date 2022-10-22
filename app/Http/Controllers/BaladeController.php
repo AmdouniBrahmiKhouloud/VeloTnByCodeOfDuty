@@ -47,12 +47,17 @@ class BaladeController extends Controller
             'starting_hour'  => 'required|before:ending_hour|after:2 hours',
             'ending_hour'=> 'required',
             'places'=> 'required|integer',
+            'image'=>'required|image|mimes:jpeg,png,jpg,gif,svg',
         ]);
+        $file= $request->file('image');
+        $filename= date('YmdHi').$file->getClientOriginalName();
+        $file-> move(public_path('images'), $filename);
         $balade = new Balade();
         $balade->name = $request->all()['name'];
         $balade->starting_hour = $request->all()['starting_hour'];
         $balade->ending_hour = $request->all()['ending_hour'];
         $balade->places = $request->all()['places'];
+        $balade->image = $filename ;
         $balade->save();
         foreach ($request->all()['velo'] as $velo_id) {
             $velo = Velo::where('id',$velo_id)->get()[0];
@@ -90,7 +95,9 @@ class BaladeController extends Controller
      */
     public function edit(Balade $balade)
     {
-        return view('balades.edit', compact('balade'));
+        $velos = Velo::whereNull('balade_id')->orWhere('balade_id', $balade->id)->get();
+        $programmes = Programme::whereNull('balade_id')->orWhere('balade_id',$balade->id)->get();
+        return view('balades.edit', compact('balade', 'velos','programmes'));
     }
 
     /**
@@ -102,7 +109,37 @@ class BaladeController extends Controller
      */
     public function update(Request $request, Balade $balade)
     {
-        $balade->update($request->all());
+        
+        $file= $request->file('image');
+        if ($file) {
+            $filename= date('YmdHi').$file->getClientOriginalName();
+            $file-> move(public_path('images'), $filename);
+            $balade->image = $filename;
+        }
+
+        $balade->name = $request->all()['name'];
+        $balade->starting_hour = $request->all()['starting_hour'];
+        $balade->ending_hour = $request->all()['ending_hour'];
+        $balade->places = $request->all()['places'];
+
+        $balade->save();
+        foreach ($request->all()['velo'] as $velo_id) {
+            $velo = Velo::where('id',$velo_id)->get()[0];
+
+            $out = new \Symfony\Component\Console\Output\ConsoleOutput();
+            $out->writeln($balade);
+            $velo->balade_id = $balade->id ;
+            $velo->save();
+        }
+        foreach ($request->all()['programme'] as $programme_id) {
+            $programme = Programme::where('id',$programme_id)->get()[0];
+
+            $out = new \Symfony\Component\Console\Output\ConsoleOutput();
+            $out->writeln($balade);
+            $programme->balade_id = $balade->id ;
+            $programme->save();
+        }
+        // $balade->update($request->all());
 
         return redirect('/balades');
     }

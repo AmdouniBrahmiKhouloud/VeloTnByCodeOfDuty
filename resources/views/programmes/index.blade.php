@@ -9,16 +9,18 @@
       <table class="table">
         <thead class="table-light">
           <tr>
-            <th>name</th>
-            <th>description</th>
-            <th>pointDepart</th>
-            <th>distance</th>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Nescription</th>
+            <th>PointDepart</th>
+            <th>Distance</th>
             <th>Actions</th>
           </tr>
         </thead>
         <tbody class="table-border-bottom-0">
             @foreach ($programmes as $item)
                 <tr>
+                    <td><img src="images/{{$item->image}}" style="height:50px;width:50px"></td>
                     <td> {{$item->name}} </td>
                     <td> {{$item->description}} </td>
                     <td> {{$item->pointDepart}} </td>

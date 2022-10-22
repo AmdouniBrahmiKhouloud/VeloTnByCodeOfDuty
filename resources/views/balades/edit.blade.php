@@ -12,14 +12,44 @@
             <h5 class="mb-0">Add Balade</h5>
           </div>
           <div class="card-body">
-            <form method="POST" action="/updatebalade/{{$balade->id}}">
+            <form method="POST" action="/updatebalade/{{$balade->id}}" enctype="multipart/form-data">
                 @csrf 
-              <div class="row mb-3">
-                <label class="col-sm-2 col-form-label" for="basic-default-name">velo</label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" value="{{$balade->velo}}" name="velo" id="basic-default-name" placeholder="Velo" />
+                <img src="../images/{{$balade->image}}" style="height:200px;width:200px ;margin-left:40%;margin-bottom:3%">              <div class="row mb-3">
+                <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label" for="basic-default-name">velo</label>
+                  <div class="col-sm-10">
+                  <select class="form-control custom-select" multiple name="velo[]">
+                  @foreach ($velos as $velo)
+                  @if($velo->balade_id === $balade->id)
+                    <option value="{{$velo->id}}" selected>{{$velo->reference}}</option>
+                  @else
+                  <option value="{{$velo->id}}" >{{$velo->reference}}</option>
+                  @endif
+                  @endforeach   
+                  </select>
+                  </div>
                 </div>
-              </div>
+                <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label" for="basic-default-name">programme</label>
+                  <div class="col-sm-10">
+                  <select class="form-control custom-select" multiple name="programme[]">
+                  @foreach ($programmes as $programme)
+                  @if($programme->balade_id === $balade->id)
+                  <option value="{{$programme->id}}" selected >{{$programme->name}}</option>
+                  @else
+                  <option value="{{$programme->id}}">{{$programme->name}}</option>
+                  @endif
+                  @endforeach   
+                  </select>
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label" for="basic-default-name">Name</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" value="{{$balade->name}}" name="name" id="basic-default-name" placeholder="Name" />
+                  </div>
+                </div>
 
               <div class="row mb-3">
                 <label class="col-sm-2 col-form-label" for="basic-default-name">Starting hour</label>
@@ -42,6 +72,15 @@
                 </div>
               </div>
 
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-name">Image</label>
+                <div class="col-sm-10">
+                  <input type="file" class="form-control @error('image') is-invalid @enderror" name="image" />
+                  @error('image')
+                  <div class="error">{{$message }}</div>
+                  @enderror
+                </div>
+              </div>
               
 
               <div class="row justify-content-end">

@@ -2,13 +2,17 @@
 
 @section('body')
 <div class="container-xxl flex-grow-1 container-p-y">
-  @if (count($velos) === 0)
+  @if ((count($velos) === 0))
   <div class="col-xxl">
     <div class="card mb-4">
   <h1>no bicycles available</h1>
     </div></div>
+  @elseif((count($programmes) === 0))
+  <div class="col-xxl">
+    <div class="card mb-4">
+  <h1>no programme available</h1>
+    </div></div>
   @else
-
  
 
     <!-- Basic Layout & Basic with Icons -->
@@ -20,7 +24,7 @@
             <h5 class="mb-0">Add Balade</h5>
           </div>
           <div class="card-body">
-            <form method="POST" action="/balades/store">
+            <form method="POST" action="/balades/store" enctype="multipart/form-data">
                 @csrf 
               <div class="row mb-3">
                 <label class="col-sm-2 col-form-label" for="basic-default-name">velo</label>
@@ -83,7 +87,16 @@
                   @enderror 
                 </div>
               </div>
-
+              
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-name">Image</label>
+                <div class="col-sm-10">
+                  <input type="file" class="form-control  @error('image') is-invalid @enderror" name="image" id="basic-default-name" placeholder="Image" />
+                  @error('image')
+                  <div class="error">{{$message }}</div>
+                  @enderror 
+                </div>
+              </div>
               
 
               <div class="row justify-content-end">

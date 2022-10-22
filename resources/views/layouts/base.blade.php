@@ -94,6 +94,12 @@
                 <div data-i18n="Analytics">Association</div>
               </a>
             </li>
+            <li class="menu-item">
+              <a href="/programmes" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <div data-i18n="Analytics">Programmes</div>
+              </a>
+            </li>
 
             <li class="menu-item">
                 <a href="/evenements" class="menu-link">

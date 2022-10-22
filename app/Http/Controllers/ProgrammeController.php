@@ -42,9 +42,21 @@ class ProgrammeController extends Controller
             'description'  => 'required',
             'pointDepart'=> 'required',
             'distance'=> 'required|integer',
+            'image'=>'required|image|mimes:jpeg,png,jpg,gif,svg',
         ]);
 
-        Programme::create($request->all());
+        $file= $request->file('image');
+        $filename= date('YmdHi').$file->getClientOriginalName();
+        $file-> move(public_path('images'), $filename);
+        $programme = new Programme();
+        $programme->name = $request->all()['name'];
+        $programme->description = $request->all()['description'];
+        $programme->pointDepart = $request->all()['pointDepart'];
+        $programme->distance = $request->all()['distance'];
+        $programme->image = $filename ;
+        $programme->save();
+
+        // Programme::create($request->all());
 
         return redirect('/programmes');    
     }
@@ -80,8 +92,23 @@ class ProgrammeController extends Controller
      */
     public function update(Request $request, Programme $programme)
     {
-        $programme->update($request->all());
-
+        $this->validate($request, [
+            'name' => 'required',
+            'description'  => 'required',
+            'pointDepart'=> 'required',
+            'distance'=> 'required|integer',
+        ]);
+        $file= $request->file('image');
+        if ($file) {
+            $filename= date('YmdHi').$file->getClientOriginalName();
+            $file-> move(public_path('images'), $filename);
+            $programme->image = $filename;
+        }
+        $programme->name = $request->all()['name'];
+        $programme->description = $request->all()['description'];
+        $programme->pointDepart = $request->all()['pointDepart'];
+        $programme->distance = $request->all()['distance'];
+        $programme->save();
         return redirect('/programmes');
     }
 

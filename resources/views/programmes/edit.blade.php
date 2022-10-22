@@ -12,19 +12,27 @@
             <h5 class="mb-0">Edit Programme</h5>
           </div>
           <div class="card-body">
-            <form method="POST" action="/updateprogramme/{{$programme->id}}">
+            <form method="POST" action="/updateprogramme/{{$programme->id}}" enctype="multipart/form-data" >
                 @csrf 
-              <div class="row mb-3">
-                <label class="col-sm-2 col-form-label" for="basic-default-name">Name</label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" value="{{$programme->name}}" name="name" id="basic-default-name" placeholder="Name" />
-                </div>
-              </div>
+                <img src="../images/{{$programme->image}}" style="height:200px;width:200px ;margin-left:40%;margin-bottom:3%">              <div class="row mb-3">
+                  <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label" for="basic-default-name">Name</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control  @error('name') is-invalid @enderror" value="{{$programme->name}}" name="name" id="basic-default-name" placeholder="Name" />
+                      @error('name')
+                        <div class="error">{{$message }}</div>
+                      @enderror 
+                    </div>
+                  </div>
+              
 
               <div class="row mb-3">
                 <label class="col-sm-2 col-form-label" for="basic-default-name">Description</label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" value="{{$programme->description}}" name="description" id="basic-default-name" placeholder="Description" />
+                  <input type="text" class="form-control @error('description') is-invalid @enderror" value="{{$programme->description}}" name="description" id="basic-default-name" placeholder="Description" />
+                  @error('description')
+                  <div class="error">{{$message }}</div>
+                  @enderror 
                 </div>
               </div>
 
@@ -49,7 +57,15 @@
                 </div>
               </div>
 
-              
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-name">Image</label>
+                <div class="col-sm-10">
+                  <input type="file" class="form-control @error('image') is-invalid @enderror" name="image" />
+                  @error('image')
+                  <div class="error">{{$message }}</div>
+                  @enderror
+                </div>
+              </div>
 
               <div class="row justify-content-end">
                 <div class="col-sm-10">

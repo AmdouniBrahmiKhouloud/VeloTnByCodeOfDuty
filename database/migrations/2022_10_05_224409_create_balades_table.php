@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('balades', function (Blueprint $table) {
             $table->id();
+            $table->string("image");
             $table->string("name");
             $table->dateTime("starting_hour");
             $table->dateTime("ending_hour");
