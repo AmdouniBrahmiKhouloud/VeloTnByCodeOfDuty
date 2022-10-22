@@ -8,6 +8,9 @@ use App\Http\Requests\UpdateparticipationRequest;
 use App\Models\participation;
 use App\Models\evenement;
 
+use Mail;
+use App\Mail\NotifyMail;
+
 class ParticipationController extends Controller
 {
     /**
@@ -48,8 +51,15 @@ class ParticipationController extends Controller
             'email' => 'required',
             'phone' => 'required',
         ]);
+
         Participation::create($request->all());
-        return redirect('/participations');
+        $mailData = [
+            "nom" => $request->nom,
+            "prenom" => $request->prenom
+        ];
+        Mail::to($request->email)->send(new NotifyMail($mailData));
+
+        return redirect('/events');
     }
 
     /**
