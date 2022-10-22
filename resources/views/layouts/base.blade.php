@@ -103,6 +103,13 @@
               </li>
 
               <li class="menu-item">
+                <a href="/participations" class="menu-link">
+                  <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                  <div data-i18n="Analytics">Particpations</div>
+                </a>
+              </li>
+
+              <li class="menu-item">
                 <a href="/balades" class="menu-link">
                   <i class="menu-icon tf-icons bx bx-home-circle"></i>
                   <div data-i18n="Analytics">Balades</div>

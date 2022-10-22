@@ -17,7 +17,9 @@ class ParticipationController extends Controller
      */
     public function index()
     {
-        //
+        $participations = Participation::all();
+
+        return view('participation.index', compact('participations'));
     }
 
     /**
@@ -41,7 +43,7 @@ class ParticipationController extends Controller
     public function store(Request $request)
     {
         Participation::create($request->all());
-        return redirect('/evenements');
+        return redirect('/participations');
     }
 
     /**
@@ -86,6 +88,8 @@ class ParticipationController extends Controller
      */
     public function destroy(participation $participation)
     {
-        //
+        $participation->delete();
+
+        return back()->with('message', 'item deleted successfully');
     }
 }

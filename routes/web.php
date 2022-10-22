@@ -74,3 +74,7 @@ Route::get('/evenement/remove/{evenement}',[EvenementController::class, 'destroy
 Route::get('/events',[EvenementController::class, 'list']);
 Route::post('/participation/store',[ParticipationController::class, 'store']);
 Route::get('/participer/{evenement}',[ParticipationController::class, 'create']);
+Route::get('/participations',[ParticipationController::class, 'index']);
+Route::get('/participation/remove/{participation}',[ParticipationController::class, 'destroy']);
+
+
