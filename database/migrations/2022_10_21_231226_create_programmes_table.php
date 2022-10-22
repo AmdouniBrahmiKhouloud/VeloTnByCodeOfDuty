@@ -13,12 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('balades', function (Blueprint $table) {
+        Schema::create('programmes', function (Blueprint $table) {
             $table->id();
-            $table->string("name");
-            $table->dateTime("starting_hour");
-            $table->dateTime("ending_hour");
-            $table->integer("places");            
+            $table->string('name');
+            $table->string('description');
+            $table->string('pointDepart');
+            $table->integer('distance');
+            $table->unsignedBigInteger('balade_id')->nullable();
+            $table->foreign('balade_id')->references('id')->on('balades')->onDelete('set null');
             $table->timestamps();
         });
     }
@@ -30,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('balades');
+        Schema::dropIfExists('programmes');
     }
 };

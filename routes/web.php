@@ -6,6 +6,7 @@ use App\Http\Controllers\VeloController;
 use App\Http\Controllers\AssociationController;
 
 use App\Http\Controllers\BaladeController;
+use App\Http\Controllers\ProgrammeController;
 use App\Http\Controllers\EvenementController;
 /*
 |--------------------------------------------------------------------------
@@ -50,6 +51,13 @@ Route::post('/balades/store',[BaladeController::class, 'store']);
 Route::get('/editbalade/{balade}',[BaladeController::class, 'edit']);
 Route::post('/updatebalade/{balade}',[BaladeController::class, 'update']);
 Route::get('/balades/remove/{balade}',[BaladeController::class, 'destroy']);
+
+Route::get('/programmes',[ProgrammeController::class, 'index']);
+Route::get('/programmes/add',[ProgrammeController::class, 'create']);
+Route::post('/programmes/store',[ProgrammeController::class, 'store']);
+Route::get('/editprogramme/{programme}',[ProgrammeController::class, 'edit']);
+Route::post('/updateprogramme/{programme}',[ProgrammeController::class, 'update']);
+Route::get('/programmes/remove/{programme}',[ProgrammeController::class, 'destroy']);
 
 
 

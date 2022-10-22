@@ -24,14 +24,14 @@
               <div class="row mb-3">
                 <label class="col-sm-2 col-form-label" for="basic-default-name">Starting hour</label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" value="{{$balade->starting_hour}}" name="starting_hour" id="basic-default-name" placeholder="Starting hour" />
+                  <input type="datetime-local" class="form-control" value="{{$balade->starting_hour}}" name="starting_hour" id="basic-default-name" placeholder="Starting hour" />
                 </div>
               </div>
 
               <div class="row mb-3">
                 <label class="col-sm-2 col-form-label" for="basic-default-name">Ending hour</label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" value="{{$balade->ending_hour}}"  name="ending_hour" id="basic-default-name" placeholder="Ending hour" />
+                  <input type="datetime-local" class="form-control" value="{{$balade->ending_hour}}"  name="ending_hour" id="basic-default-name" placeholder="Ending hour" />
                 </div>
               </div>
 

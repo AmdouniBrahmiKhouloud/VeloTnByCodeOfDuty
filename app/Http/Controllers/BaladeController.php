@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Balade;
 use App\Models\Velo;
+use App\Models\Programme;
 use Illuminate\Http\Request;
 
 class BaladeController extends Controller
@@ -29,7 +30,8 @@ class BaladeController extends Controller
     {
         
         $velos = Velo::whereNull('balade_id')->get();
-        return view('balades.create',compact('velos'));
+        $programmes = Programme::whereNull('balade_id')->get();
+        return view('balades.create',compact('velos'),compact('programmes'));
     }
 
     /**
@@ -40,6 +42,12 @@ class BaladeController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'name' => 'required',
+            'starting_hour'  => 'required|before:ending_hour|after:2 hours',
+            'ending_hour'=> 'required',
+            'places'=> 'required|integer',
+        ]);
         $balade = new Balade();
         $balade->name = $request->all()['name'];
         $balade->starting_hour = $request->all()['starting_hour'];
@@ -52,6 +60,13 @@ class BaladeController extends Controller
             $out->writeln($balade);
             $velo->balade_id = $balade->id ;
             $velo->save();
+        }
+        foreach ($request->all()['programme'] as $programme_id) {
+            $programme = Programme::where('id',$programme_id)->get()[0];
+            $out = new \Symfony\Component\Console\Output\ConsoleOutput();
+            $out->writeln($balade);
+            $programme->balade_id = $balade->id ;
+            $programme->save();
         }
         return redirect('/balades');
     }
