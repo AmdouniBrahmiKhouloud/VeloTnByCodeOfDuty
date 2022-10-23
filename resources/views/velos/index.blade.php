@@ -9,10 +9,9 @@
       <table class="table">
         <thead class="table-light">
           <tr>
+            <th>image</th>
             <th>Reference</th>
-            <th>type</th>
             <th>price</th>
-            <th>color</th>
             <th>nbr_place</th>
             <th>Actions</th>
           </tr>
@@ -20,10 +19,9 @@
         <tbody class="table-border-bottom-0">
             @foreach ($velos as $item)
                 <tr>
+                    <td><img src="images/{{$item->image}}" style="height:50px;width:50px"></td>
                     <td> {{$item->reference}} </td>
-                    <td> {{$item->type}} </td>
                     <td> {{$item->price}} </td>
-                    <td> {{$item->color}} </td>
                     <td> {{$item->nbr_place}} </td>
                     <td> 
                         <a class="" href="/editvelo/{{$item->id}}"

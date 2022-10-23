@@ -9,16 +9,18 @@
       <table class="table">
         <thead class="table-light">
           <tr>
-            <th>name</th>
-            <th>starting_houre</th>
-            <th>ending_houre</th>
-            <th>places</th>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Starting_houre</th>
+            <th>Ending_houre</th>
+            <th>Places</th>
             <th>Actions</th>
           </tr>
         </thead>
         <tbody class="table-border-bottom-0">
             @foreach ($balades as $item)
                 <tr>
+                    <td><img src="images/{{$item->image}}" style="height:50px;width:50px"></td>
                     <td> {{$item->name}} </td>
                     <td> {{$item->starting_hour}} </td>
                     <td> {{$item->ending_hour}} </td>

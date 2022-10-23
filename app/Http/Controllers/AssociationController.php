@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Association;
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class AssociationController extends Controller
 {
@@ -17,6 +18,7 @@ class AssociationController extends Controller
         $associations = Association::all();
         return view('associations.index', compact('associations'));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -38,7 +40,6 @@ class AssociationController extends Controller
     public function store(Request $request)
     {
         Association::create($request->all());
-
         return redirect('/association');
     }
 
@@ -75,7 +76,6 @@ class AssociationController extends Controller
     public function update(Request $request, Association $association)
     {
         $association->update($request->all());
-
         return redirect('/association');
     }
 
@@ -88,7 +88,48 @@ class AssociationController extends Controller
     public function destroy(Association $association)
     {
         $association->delete();
-
         return back()->with('message', 'item deleted successfully');
+    }
+
+
+    public function ShowMembersList($association)
+    {
+        $search=$request['search'] ?? "";
+        if($search==""){
+            $users = User::all();
+        }
+        return view('associations.AffectMember', compact('users','search','association'));
+    }
+
+
+    public function SearchMembersFilter(Request $request,$association)
+    {
+        $search=$request['search'] ?? "";
+        if($search!=""){
+            $users=User::where('name','LIKE',"%$search%")
+                ->orWhere('email','LIKE',"%$search%")
+                ->get();
+        }
+        else {
+            $users = User::all();
+        }
+        return view('associations.AffectMember', compact('users','search','association'));
+    }
+
+    public function addSelectedUserToAssociation(Association $association,  $user)
+    {
+        //$association->users()->get()
+        $user1 = User::find($user);
+        $user1->association()->associate( $association);
+        $user1->save();
+        return redirect('/association');
+    }
+
+
+    public function listUsersPerAsssociation(Association $association)
+    {
+        $users=$association->users()->get();
+        return view('associations.UsersPerAssociation', compact('users'));
+
     }
 }

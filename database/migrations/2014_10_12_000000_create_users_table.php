@@ -13,6 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
+
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
@@ -21,7 +22,15 @@ return new class extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+//            $table->foreignIdFor(\App\Models\Association::class)
+//                ->nullable()->constrained();
+
+            $table->foreignId('association_id')->nullable()->constrained()->onDelete('cascade');
+
+
         });
+
+
     }
 
     /**

@@ -26,6 +26,7 @@ class MagasinController extends Controller
      */
     public function create()
     {
+
         return view('magasins.create');
     }
 
@@ -37,9 +38,13 @@ class MagasinController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'name' => 'required',
+            'location'  => 'required',
+        ]);
         Magasin::create($request->all());
 
-        return back()->with('message', 'item stored successfully');
+        return redirect('/magasins');
     }
 
     /**
@@ -73,9 +78,13 @@ class MagasinController extends Controller
      */
     public function update(Request $request, Magasin $magasin)
     {
+        $this->validate($request, [
+            'name' => 'required',
+            'location'  => 'required',
+        ]);
         $magasin->update($request->all());
 
-        return back()->with('message', 'item updated successfully');
+        return redirect('/magasins');
     }
 
     /**
