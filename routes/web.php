@@ -12,6 +12,7 @@ use App\Http\Controllers\ModelVeloController;
 use App\Http\Controllers\BaladeController;
 use App\Http\Controllers\ProgrammeController;
 use App\Http\Controllers\EvenementController;
+use App\Http\Controllers\ParticipationController;
 use App\Models\Velo;
 
 
@@ -76,6 +77,11 @@ Route::post('/evenements/store',[EvenementController::class, 'store'])->middlewa
 Route::get('/editevenement/{evenement}',[EvenementController::class, 'edit'])->middleware('auth');
 Route::post('/updateevenement/{evenement}',[EvenementController::class, 'update'])->middleware('auth');
 Route::get('/evenement/remove/{evenement}',[EvenementController::class, 'destroy'])->middleware('auth');
+Route::get('/events',[EvenementController::class, 'list']);
+Route::post('/participation/store',[ParticipationController::class, 'store']);
+Route::get('/participer/{evenement}',[ParticipationController::class, 'create']);
+Route::get('/participations',[ParticipationController::class, 'index']);
+Route::get('/participation/remove/{participation}',[ParticipationController::class, 'destroy']);
 /*Location*/
 Route::get('/location',[LocationController::class, 'index'])->middleware('auth');
 Route::get('/location/create',[LocationController::class, 'create'])->middleware('auth');
