@@ -62,6 +62,8 @@ Route::post('/velo/store',[VeloController::class, 'store'])->middleware('auth');
 Route::get('/editvelo/{velo}',[VeloController::class, 'edit'])->middleware('auth');
 Route::post('/updatevelo/{velo}',[VeloController::class, 'update'])->middleware('auth');
 Route::get('/velo/remove/{velo}',[VeloController::class, 'destroy'])->middleware('auth');
+Route::get('/velo/export',[VeloController::class, 'export']);
+Route::get('/velo/export_pdf',[VeloController::class, 'export_pdf']);
 /*balades*/
 Route::get('/balades',[BaladeController::class, 'index'])->middleware('auth');
 Route::get('/balades/add',[BaladeController::class, 'create'])->middleware('auth');
@@ -108,6 +110,8 @@ Route::post('/models/store',[ModelVeloController::class, 'store']);
 Route::get('/editmodel/{model_Velo}',[ModelVeloController::class, 'edit']);
 Route::post('/updatemodel/{model_Velo}',[ModelVeloController::class, 'update']);
 Route::get('/models/remove/{model_Velo}',[ModelVeloController::class, 'destroy']);
+Route::get('/models/export',[ModelVeloController::class, 'export']);
+
 
 /* programmes*/
 Route::get('/programmes',[ProgrammeController::class, 'index']);

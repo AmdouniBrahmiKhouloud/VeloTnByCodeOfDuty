@@ -28,7 +28,7 @@ return new class extends Migration
             $table->timestamps();
 //            $table->foreignIdFor(\App\Models\Association::class)
 //                ->nullable()->constrained();
-           //$table->foreignId('association_id')->nullable()->constrained()->onDelete('restrict');
+        //   $table->foreignId('association_id')->nullable()->constrained()->onDelete('restrict');
 
         });
 

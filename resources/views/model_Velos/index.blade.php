@@ -6,6 +6,7 @@
     <h3 class="card-header">Manage Cycle models 🔧</h3>
     <div class="card-body">
         <a href="/models/add"> <button class="btn btn-primary"> Add Model</button></a>
+        <a href="/models/export"> <button class="btn btn-primary"> Export Excel</button></a>
     </div>
     <div class="table-responsive text-nowrap">
       <table class="table">
