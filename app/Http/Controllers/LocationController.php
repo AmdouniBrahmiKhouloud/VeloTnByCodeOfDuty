@@ -70,7 +70,30 @@ class LocationController extends Controller
         $location->save();
         return redirect('location');
     }
-
+    //storeFront
+    public function storeFront(Request $request , $idVelo)
+    {
+        $this->validate($request, [
+            'date' => 'required|after:tomorrow',
+            'hours' => 'required|numeric|min:1|not_in:0',
+        ], [
+            'Velo.required' => 'Select cycle is required.',
+            'hours.required' => 'Hours field is required.',
+            'date.required' => 'date field is required.',
+            'date.after:tomorrow' => 'Date field must be after tomorrow.'
+        ]);
+        $hours = $request->hours;
+        $velo = Velo::find($idVelo);
+        $location = New Location();
+        $location->date = $request->date;
+        $location->hours = $request->hours;
+        $location->isPaid = false;
+        $location->price=$velo->price*$hours;
+        $location->velo_id=$idVelo;
+        $location->user_id=auth()->user()->getAuthIdentifier();
+        $location->save();
+        return redirect('carte');
+    }
     /**
      * Display the specified resource.
      *
@@ -135,6 +158,6 @@ class LocationController extends Controller
     {
         $location->delete();
         return back()
-            ->with('success','reservation deleted successfully.');;
+            ->with('success','reservation deleted successfully.');
     }
 }

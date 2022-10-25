@@ -7,13 +7,13 @@
                 <div class="d-flex align-items-end row">
                     <div class="col-sm-7">
                         <div class="card-body">
-                            <h5 class="card-title text-primary">Congratulations {{auth()->user()->name}}! 🎉</h5>
+                            <h5 class="card-title text-primary">Welcome {{auth()->user()->name}}! 🎉</h5>
                             <p class="mb-4">
-                                You have done <span class="fw-bold">72%</span> more sales today. Check your new badge in
-                                your profile.
+                                Your history of your reservations , if you want to add new reservations
+                                <span class="fw-bold">new reservations</span>
                             </p>
 
-                            <a href="{{ url('/location/create') }}" class="btn btn-sm btn-outline-primary">Add New Booking</a>
+                            <a href="{{ url('/location/create') }}" class="btn btn-sm btn-outline-primary">New reservation</a>
                         </div>
                     </div>
                     <div class="col-sm-5 text-center text-sm-left">
@@ -30,12 +30,13 @@
                 </div>
             </div>
         </div>
-        <h5 class="mb-4">Table without Card</h5>
+        <h3 class="mb-4">Manage reservations 📇</h3>
         <div class="table-responsive text-nowrap">
             <table class="table card-table">
                 <thead>
                 <tr>
                     <th>Cycle</th>
+                    <th>Cycle Reference</th>
                     <th>Reservation Date</th>
                     <th>hours</th>
                     <th>Price</th>
@@ -49,6 +50,7 @@
                 <tbody class="table-border-bottom-0">
                 @foreach($locations as $location)
                     <tr>
+                        <td><img src="images/{{$location->velo->image}}" style="height:50px;width:50px"></td>
                         <td>{{$location->velo->reference}}</td>
                         <td>{{$location->date}}</td>
                         <td>{{$location->hours}}</td>

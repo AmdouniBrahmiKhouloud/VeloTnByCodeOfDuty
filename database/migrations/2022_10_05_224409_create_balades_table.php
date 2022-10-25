@@ -15,11 +15,11 @@ return new class extends Migration
     {
         Schema::create('balades', function (Blueprint $table) {
             $table->id();
-            $table->string("velo");
-            $table->string("starting_hour");
-            $table->string("ending_hour");
-            $table->string("places");            
-
+            $table->string("image");
+            $table->string("name");
+            $table->dateTime("starting_hour");
+            $table->dateTime("ending_hour");
+            $table->integer("places");            
             $table->timestamps();
         });
     }

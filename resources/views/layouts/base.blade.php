@@ -89,10 +89,36 @@
                   </a>
               </li>
 
+              <li class="menu-item">
+                <a href="/magasins" class="menu-link">
+                  <i class="menu-icon tf-icons bx bx-store-alt"></i>
+                  <div data-i18n="Analytics">Magasins</div>
+                </a>
+              </li>
+
+              <li class="menu-item">
+                <a href="/models" class="menu-link">
+                  <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                  <div data-i18n="Analytics">Models</div>
+                </a>
+              </li>
+
             <li class="menu-item">
               <a href="/velo" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-cycling"></i>
                 <div data-i18n="Analytics">Cycles</div>
+              </a>
+            </li>
+            <li class="menu-item">
+              <a href="/association" class="menu-link">
+                <i class="menu-icon tf-icons bx bxs-home-heart"></i>
+                <div data-i18n="Analytics">Association</div>
+              </a>
+            </li>
+            <li class="menu-item">
+              <a href="/programmes" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-file"></i>
+                <div data-i18n="Analytics">Programmes</div>
               </a>
             </li>
 
@@ -105,7 +131,7 @@
 
               <li class="menu-item">
                 <a href="/balades" class="menu-link">
-                  <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                  <i class="menu-icon tf-icons bx bx-walk"></i>
                   <div data-i18n="Analytics">Walks</div>
                 </a>
               </li>

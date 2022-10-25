@@ -1,10 +1,12 @@
 @extends('layouts.base')
-
+@section('title', 'Events')
 @section('body')
 <div class="container-xxl flex-grow-1 container-p-y">
 <div class="card">
-    <h5 class="card-header">Evenement</h5>
-    <a href="/evenements/add"> <button class="btn btn-primary"> Add Evenement </button></a>
+    <h3 class="card-header">Manage Event 🏅</h3>
+    <div class="card-body">
+        <a href="/evenements/add"> <button class="btn btn-primary"> Add Event </button></a>
+    </div>
     <div class="table-responsive text-nowrap">
       <table class="table">
         <thead class="table-light">

@@ -67,7 +67,7 @@
                 <div class="login_menu">
                     <ul>
                         <li><a href="{{ route('login') }}">Login</a></li>
-                        <li><a href="#"><img src="{{asset('assetsFront/images/trolly-icon.png')}}"></a></li>
+                        <li><a href="{{url('/carte')}}"><img src="{{asset('assetsFront/images/trolly-icon.png')}}"></a></li>
                         <li><a href="#"><img src="{{asset('assetsFront/images/search-icon.png')}}"></a></li>
                     </ul>
                 </div>
@@ -78,7 +78,7 @@
                     <div class="login_menu">
                         <ul>
                             <li><a href="{{ url('/profile') }}">My Profile</a></li>
-                            <li><a href="#"><img src="{{asset('assetsFront/images/trolly-icon.png')}}"></a></li>
+                            <li><a href="{{url('/carte')}}"><img src="{{asset('assetsFront/images/trolly-icon.png')}}"></a></li>
                         </ul>
                     </div>
                     <div></div>
