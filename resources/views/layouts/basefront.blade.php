@@ -52,9 +52,6 @@
                     <a class="nav-link" href="{{ url('/cycle') }}">Our Cycle</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Shop</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="{{ url('/news') }}">News</a>
                 </li>
                 <li class="nav-item">
