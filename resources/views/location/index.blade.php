@@ -7,7 +7,7 @@
                 <div class="d-flex align-items-end row">
                     <div class="col-sm-7">
                         <div class="card-body">
-                            <h5 class="card-title text-primary">Congratulations John! 🎉</h5>
+                            <h5 class="card-title text-primary">Congratulations {{auth()->user()->name}}! 🎉</h5>
                             <p class="mb-4">
                                 You have done <span class="fw-bold">72%</span> more sales today. Check your new badge in
                                 your profile.
@@ -35,38 +35,43 @@
             <table class="table card-table">
                 <thead>
                 <tr>
-                    <th>velo</th>
-                    <th>date location</th>
-                    <th>date fin location</th>
-                    <th>payé</th>
-                    <th>Status</th>
+                    <th>Cycle</th>
+                    <th>Reservation Date</th>
+                    <th>hours</th>
+                    <th>Price</th>
+                    <th>paid</th>
+                    @if(auth()->user()->role == '1')
+                        <th>User</th>
+                    @endif
                     <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
                 @foreach($locations as $location)
                     <tr>
+                        <td>{{$location->velo->reference}}</td>
+                        <td>{{$location->date}}</td>
+                        <td>{{$location->hours}}</td>
+                        <td>{{$location->price }} DT</td>
                         <td>
-                            <i class="fab fa-bootstrap fa-lg text-primary me-3"></i> <strong>{{$location->velo}}</strong>
+                            @if($location->isPaid)
+                                <span class="badge bg-label-success me-1">  {{ __('Paid') }}</span>
+                            @else
+                                <span class="badge bg-label-warning me-1"> {{ __('Pending') }}</span>
+                            @endif
                         </td>
-                        <td>{{$location->dateDebut}}</td>
-                        <td>{{$location->dateFin}}</td>
-                        <td>{{$location->isPaid}}</td>
-                        <td><span class="badge bg-label-warning me-1">Pending</span></td>
+
+                        @if(auth()->user()->role == '1')
+                            <td>{{$location->user->name}}</td>
+                        @endif
                         <td>
-                            <div class="dropdown">
-                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                                    <i class="bx bx-dots-vertical-rounded"></i>
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="javascript:void(0);"
-                                    ><i class="bx bx-edit-alt me-1"></i> Edit</a
-                                    >
-                                    <a class="dropdown-item" href="javascript:void(0);"
-                                    ><i class="bx bx-trash me-1"></i> Delete</a
-                                    >
-                                </div>
-                            </div>
+
+                            <a class="" href="/editlocation/{{$location->id}}"
+                            ><i class="bx bx-edit-alt me-1"></i></a
+                            >
+                            <a class="" href="/location/remove/{{$location->id}}"
+                            ><i class="bx bx-trash me-1"></i></a
+                            >
                         </td>
                     </tr>
                 @endforeach

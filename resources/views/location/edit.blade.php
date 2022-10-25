@@ -1,7 +1,7 @@
 @extends('layouts.base')
 @section('body')
     <div class="container-xxl flex-grow-1 container-p-y">
-        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Cycles</span> Locations</h4>
+        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Forms</span> Locations</h4>
 
         <!-- Basic Layout & Basic with Icons -->
         <div class="row">
@@ -9,11 +9,11 @@
             <div class="col-xxl">
                 <div class="card mb-4">
                     <div class="card-header d-flex align-items-center justify-content-between">
-                        <h5 class="mb-0 text-primary">Make new reservation</h5>
-                        <small class="text-muted float-end">Cycles</small>
+                        <h5 class="mb-0">New Booking</h5>
+                        <small class="text-muted float-end">Perkcycle</small>
                     </div>
                     <div class="card-body">
-                        <form action="{{ url('location/store') }}" method="post">
+                        <form action="/updatelocation/{{$location->id}}" method="post">
                             @csrf
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label" for="basic-default-name">Cycles</label>
@@ -25,7 +25,7 @@
                                              @enderror">
                                         <option value="">Select Cycle</option>
                                         @foreach ($velos as $velo)
-                                            <option value="{{$velo->id}}">{{$velo->reference}}</option>
+                                            <option value="{{$velo->id}}" {{ $location->velo_id == $velo->id ? 'selected' : '' }}>{{$velo->reference}}</option>
                                         @endforeach
                                     </select>
 
@@ -39,11 +39,11 @@
                                 <div class="col-sm-10">
                                     <input
                                         name="date"
-                                        class="form-control
-                                        @error('date')
+                                        class="form-control @error('date')
                                         is-invalid
                                         @enderror"
                                         type="datetime-local"
+                                        value="{{$location->date}}"
                                         id="datetime-local-input"
                                     />
                                     @error('date')
@@ -57,14 +57,13 @@
                                     <div class="input-group input-group-merge">
                                         <input
                                             name="hours"
-                                            class="
-                                            form-control
+                                            class="form-control
                                             @error('hours')
                                             is-invalid
-                                            @enderror
-                                            "
+                                            @enderror"
                                             type="number"
                                             id="datetime-local-input"
+                                            value="{{$location->hours}}"
                                         />
                                     </div>
                                     @error('hours')
@@ -74,7 +73,7 @@
                             </div>
                             <div class="row justify-content-end">
                                 <div class="col-sm-10">
-                                    <button type="submit" class="btn btn-primary">Send</button>
+                                    <button type="submit" class="btn btn-primary">Update reservation</button>
                                 </div>
                             </div>
                         </form>
