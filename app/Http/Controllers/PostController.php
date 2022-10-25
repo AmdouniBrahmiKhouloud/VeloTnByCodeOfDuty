@@ -39,7 +39,16 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request,Association $association)
-    {  if ($request->hasFile('image')) {
+    {         // Form validation
+        $this->validate($request, [
+            'title' => 'required',
+            'details'=>'required',
+            'image' => 'required|mimes:jpeg,bmp,png',
+
+        ]);
+
+
+        if ($request->hasFile('image')) {
         $request->validate([
             'image' => 'mimes:jpeg,bmp,png'
         ]);

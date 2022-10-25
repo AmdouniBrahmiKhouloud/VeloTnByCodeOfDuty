@@ -24,6 +24,7 @@
                 </table>
             </div>
         </div>
+        <button href="/usersassociation/export">Generate excel</button>
     </div>
 
 @endsection

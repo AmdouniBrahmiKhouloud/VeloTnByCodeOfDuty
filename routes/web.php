@@ -94,6 +94,7 @@ Route::get('/associationaddMember/{association}',[AssociationController::class, 
 Route::get('/SearchMembers/{association}',[AssociationController::class, 'SearchMembersFilter'])->name("SearchMembersFilter");
 Route::get('/addSelectedUserToAssociation/{association}/{user_id}',[AssociationController::class, 'addSelectedUserToAssociation']);
 Route::get('/listUsersPerAsssociation/{association}',[AssociationController::class, 'listUsersPerAsssociation']);
+Route::get('usersassociation/export/', [AssociationController::class, 'export']);
 
 //posts
 Route::get('/postadd/{association}',[\App\Http\Controllers\PostController::class, 'create']);

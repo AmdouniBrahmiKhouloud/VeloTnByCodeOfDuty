@@ -14,18 +14,30 @@
           <div class="card-body">
             <form method="POST" action="/association/store">
                 @csrf
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
               <div class="row mb-3">
                 <label class="col-sm-2 col-form-label" for="basic-default-name">Name</label>
                 <div class="col-sm-10">
                   <input type="text" class="form-control" name="name" id="basic-default-name" placeholder="Name" />
                 </div>
+
               </div>
+
 
               <div class="row mb-3">
                 <label class="col-sm-2 col-form-label" for="basic-default-name">type</label>
                 <div class="col-sm-10">
                   <input type="text" class="form-control" name="type" id="basic-default-name" placeholder="type" />
                 </div>
+
               </div>
 
                 <div class="row mb-3">
