@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 
 use App\Exports\VelosExport;
 use Maatwebsite\Excel\Facades\Excel;
+use \PDF;
+
 class VeloController extends Controller
 {
     /**
@@ -142,5 +144,14 @@ class VeloController extends Controller
     public function export() 
     {
         return Excel::download(new VelosExport, 'velos.xlsx');
+    }
+
+    public function export_pdf() 
+    {
+        $velos = Velo::all();
+
+        $pdf = PDF::loadView('velos.pdf', compact('velos'))->setPaper('A4');
+        // download PDF file with download method
+        return $pdf->download('velos.pdf');
     }
 }

@@ -51,6 +51,7 @@ Route::get('/editvelo/{velo}',[VeloController::class, 'edit']);
 Route::post('/updatevelo/{velo}',[VeloController::class, 'update']);
 Route::get('/velo/remove/{velo}',[VeloController::class, 'destroy']);
 Route::get('/velo/export',[VeloController::class, 'export']);
+Route::get('/velo/export_pdf',[VeloController::class, 'export_pdf']);
 
 Route::get('/magasins',[MagasinController::class, 'index']);
 Route::get('/magasins/add',[MagasinController::class, 'create']);
