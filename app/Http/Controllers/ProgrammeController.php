@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Programme;
 use Illuminate\Http\Request;
 
+use App\Exports\ProgrammeExport;
+use Maatwebsite\Excel\Facades\Excel;
+use \PDF;
 class ProgrammeController extends Controller
 {
     /**
@@ -123,5 +126,18 @@ class ProgrammeController extends Controller
         $programme->delete();
 
         return back()->with('message', 'item deleted successfully');
+    }
+    public function export() 
+    {
+        return Excel::download(new ProgrammeExport, 'programmes.xlsx');
+    }
+
+    public function export_pdf() 
+    {
+        $programmes = Programme::all();
+
+        $pdf = PDF::loadView('programmes.pdf', compact('programmes'))->setPaper('A4');
+        // download PDF file with download method
+        return $pdf->download('programmes.pdf');
     }
 }

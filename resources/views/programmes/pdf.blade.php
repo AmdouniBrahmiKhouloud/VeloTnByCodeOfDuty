@@ -1,14 +1,7 @@
-@extends('layouts.base')
-@section('title', 'Programmes')
-@section('body')
+
 <div class="container-xxl flex-grow-1 container-p-y">
 <div class="card">
     <h3 class="card-header">Manage Programmes 🆕</h3>
-    <div class="card-body">
-        <a href="/programmes/add"> <button class="btn btn-primary"> Add Programme </button></a>
-        <a href="/programmes/export"> <button class="btn btn-primary"> Export excel</button></a>
-    <a href="/programmes/export_pdf"> <button class="btn btn-primary"> Export pdf</button></a>
-    </div>
     <div class="table-responsive text-nowrap">
       <table class="table">
         <thead class="table-light">
@@ -45,4 +38,3 @@
   </div>
 </div>
 
-@endsection

@@ -120,7 +120,8 @@ Route::post('/programmes/store',[ProgrammeController::class, 'store']);
 Route::get('/editprogramme/{programme}',[ProgrammeController::class, 'edit']);
 Route::post('/updateprogramme/{programme}',[ProgrammeController::class, 'update']);
 Route::get('/programmes/remove/{programme}',[ProgrammeController::class, 'destroy']);
-
+Route::get('/programmes/export',[ProgrammeController::class, 'export']);
+Route::get('/programmes/export_pdf',[ProgrammeController::class, 'export_pdf']);
 
 //association
 
