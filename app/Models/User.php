@@ -19,6 +19,10 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'lastname',
+        'phone',
+        'region',
+        'address',
         'email',
         'password',
     ];
@@ -41,6 +45,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function locations()
+    {
+        return $this->hasMany(Location::class);
+    }
+
 
     public function association()
     {

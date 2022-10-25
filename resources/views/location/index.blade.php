@@ -7,13 +7,13 @@
                 <div class="d-flex align-items-end row">
                     <div class="col-sm-7">
                         <div class="card-body">
-                            <h5 class="card-title text-primary">Congratulations John! 🎉</h5>
+                            <h5 class="card-title text-primary">Welcome {{auth()->user()->name}}! 🎉</h5>
                             <p class="mb-4">
-                                You have done <span class="fw-bold">72%</span> more sales today. Check your new badge in
-                                your profile.
+                                Your history of your reservations , if you want to add new reservations
+                                <span class="fw-bold">new reservations</span>
                             </p>
 
-                            <a href="{{ url('/location/create') }}" class="btn btn-sm btn-outline-primary">Add New Booking</a>
+                            <a href="{{ url('/location/create') }}" class="btn btn-sm btn-outline-primary">New reservation</a>
                         </div>
                     </div>
                     <div class="col-sm-5 text-center text-sm-left">
@@ -30,43 +30,50 @@
                 </div>
             </div>
         </div>
-        <h5 class="mb-4">Table without Card</h5>
+        <h3 class="mb-4">Manage reservations 📇</h3>
         <div class="table-responsive text-nowrap">
             <table class="table card-table">
                 <thead>
                 <tr>
-                    <th>velo</th>
-                    <th>date location</th>
-                    <th>date fin location</th>
-                    <th>payé</th>
-                    <th>Status</th>
+                    <th>Cycle</th>
+                    <th>Cycle Reference</th>
+                    <th>Reservation Date</th>
+                    <th>hours</th>
+                    <th>Price</th>
+                    <th>paid</th>
+                    @if(auth()->user()->role == '1')
+                        <th>User</th>
+                    @endif
                     <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
                 @foreach($locations as $location)
                     <tr>
+                        <td><img src="images/{{$location->velo->image}}" style="height:50px;width:50px"></td>
+                        <td>{{$location->velo->reference}}</td>
+                        <td>{{$location->date}}</td>
+                        <td>{{$location->hours}}</td>
+                        <td>{{$location->price }} DT</td>
                         <td>
-                            <i class="fab fa-bootstrap fa-lg text-primary me-3"></i> <strong>{{$location->velo}}</strong>
+                            @if($location->isPaid)
+                                <span class="badge bg-label-success me-1">  {{ __('Paid') }}</span>
+                            @else
+                                <span class="badge bg-label-warning me-1"> {{ __('Pending') }}</span>
+                            @endif
                         </td>
-                        <td>{{$location->dateDebut}}</td>
-                        <td>{{$location->dateFin}}</td>
-                        <td>{{$location->isPaid}}</td>
-                        <td><span class="badge bg-label-warning me-1">Pending</span></td>
+
+                        @if(auth()->user()->role == '1')
+                            <td>{{$location->user->name}}</td>
+                        @endif
                         <td>
-                            <div class="dropdown">
-                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                                    <i class="bx bx-dots-vertical-rounded"></i>
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="javascript:void(0);"
-                                    ><i class="bx bx-edit-alt me-1"></i> Edit</a
-                                    >
-                                    <a class="dropdown-item" href="javascript:void(0);"
-                                    ><i class="bx bx-trash me-1"></i> Delete</a
-                                    >
-                                </div>
-                            </div>
+
+                            <a class="" href="/editlocation/{{$location->id}}"
+                            ><i class="bx bx-edit-alt me-1"></i></a
+                            >
+                            <a class="" href="/location/remove/{{$location->id}}"
+                            ><i class="bx bx-trash me-1"></i></a
+                            >
                         </td>
                     </tr>
                 @endforeach

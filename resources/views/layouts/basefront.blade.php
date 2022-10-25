@@ -13,7 +13,7 @@
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="assetsFront/images/logo.png">
+    <link rel="icon" href="{{asset('assetsFront/images/logo.png')}}">
     <!-- bootstrap css -->
     <link rel="stylesheet" type="text/css" href="{{asset('assetsFront/css/bootstrap.min.css')}}">
     <!-- style css -->
@@ -46,13 +46,7 @@
                     <a class="nav-link" href="{{ url('/') }}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/about') }}">About</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="{{ url('/cycle') }}">Our Cycle</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Shop</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('/news') }}">News</a>
@@ -64,19 +58,31 @@
                     <a class="nav-link" href="{{ url('/contact') }}">Contact Us</a>
                 </li>
             </ul>
+            @guest
             <form class="form-inline my-2 my-lg-0">
                 <div class="login_menu">
                     <ul>
-                        <li><a href="#">Login</a></li>
-                        <li><a href="#"><img src="{{asset('assetsFront/images/trolly-icon.png')}}"></a></li>
+                        <li><a href="{{ route('login') }}">Login</a></li>
+                        <li><a href="{{url('/carte')}}"><img src="{{asset('assetsFront/images/trolly-icon.png')}}"></a></li>
                         <li><a href="#"><img src="{{asset('assetsFront/images/search-icon.png')}}"></a></li>
                     </ul>
                 </div>
                 <div></div>
             </form>
+            @else
+                <form class="form-inline my-2 my-lg-0">
+                    <div class="login_menu">
+                        <ul>
+                            <li><a href="{{ url('/profile') }}">My Profile</a></li>
+                            <li><a href="{{url('/carte')}}"><img src="{{asset('assetsFront/images/trolly-icon.png')}}"></a></li>
+                        </ul>
+                    </div>
+                    <div></div>
+                </form>
+            @endguest
         </div>
         <div id="main">
-<span style="font-size:36px;cursor:pointer; color: #fff" onclick="openNav()"><img src="{{asset('assetsFront/images/toggle-icon.png')}}" style="height: 30px;"></span>
+            <span style="font-size:36px;cursor:pointer; color: #fff" onclick="openNav()"><img src="{{asset('assetsFront/images/toggle-icon.png')}}" style="height: 30px;"></span>
         </div>
     </nav>
     <!-- banner section start -->
@@ -188,8 +194,8 @@
 <!-- copyright section end -->
 <!-- Javascript files-->
 <script src="{{asset('assetsFront/js/jquery.min.js')}}"></script>
-<script src="{{asset('assetsFront/js/popper.min.js')}}"></script>
 <script src="{{asset('assetsFront/js/bootstrap.bundle.min.js')}}"></script>
+<script src=""></script>
 <script src="{{asset('assetsFront/js/jquery-3.0.0.min.js')}}"></script>
 <script src="{{asset('assetsFront/js/plugin.js')}}"></script>
 <!-- sidebar -->

@@ -15,11 +15,14 @@ return new class extends Migration
     {
         Schema::create('locations', function (Blueprint $table) {
             $table->id();
-            $table->string('velo');
-            $table->dateTime('dateDebut');
-            $table->dateTime('dateFin');
+            $table->dateTime('date');
+            $table->integer('price');
+            $table->integer('hours');
             $table->boolean('isPaid');
-            $table->boolean('status');
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('velo_id');
+            $table->foreign('user_id')->references('id')->on("users")->onDelete('cascade');
+            $table->foreign('velo_id')->references('id')->on("velos")->onDelete('cascade');
             $table->timestamps();
         });
     }

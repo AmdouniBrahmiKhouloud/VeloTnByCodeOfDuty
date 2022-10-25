@@ -204,7 +204,7 @@
     display: none;
 }
 .navbar-light .navbar-toggler-icon {
-    background-image:url(../images/toggle-icon1.png); 
+    background-image:url(../images/toggle-icon1.png);
     width: 40px;
 }
 .navbar-light .navbar-toggler {
@@ -319,7 +319,7 @@
     display: none;
 }
 .navbar-light .navbar-toggler-icon {
-    background-image:url(../images/toggle-icon1.png); 
+    background-image:url(../images/toggle-icon1.png);
     width: 40px;
 }
 .navbar-light .navbar-toggler {
@@ -474,7 +474,7 @@ height: 110%;
     }
     .bg-light { background-color: #ffffff !important;}
 .navbar-light .navbar-toggler-icon {
-    background-image:url(../images/toggle-icon1.png); 
+    background-image:url(../images/toggle-icon1.png);
     width: 40px;
 }
 .navbar-light .navbar-toggler {
