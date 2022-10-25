@@ -130,6 +130,7 @@ class AssociationController extends Controller
         $numb="+21629162035";
         //$association->users()->get()
         $user1 = User::find($user);
+
         $user1->association()->associate( $association);
         $user1->save();
 
@@ -137,7 +138,7 @@ class AssociationController extends Controller
         $auth_token = getenv("TWILIO_AUTH_TOKEN");
         $twilio_number = getenv("TWILIO_NUMBER");
         $client = new Client($account_sid, $auth_token);
-        $client->messages->create($numb,
+        $client->messages->create($user1->phone,
             ['from' => $twilio_number, 'body' => "vous etes affecté a une association"] );
 
 
