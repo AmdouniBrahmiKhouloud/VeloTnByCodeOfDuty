@@ -50,6 +50,7 @@ Route::post('/velo/store',[VeloController::class, 'store']);
 Route::get('/editvelo/{velo}',[VeloController::class, 'edit']);
 Route::post('/updatevelo/{velo}',[VeloController::class, 'update']);
 Route::get('/velo/remove/{velo}',[VeloController::class, 'destroy']);
+Route::get('/velo/export',[VeloController::class, 'export']);
 
 Route::get('/magasins',[MagasinController::class, 'index']);
 Route::get('/magasins/add',[MagasinController::class, 'create']);
@@ -64,6 +65,8 @@ Route::post('/models/store',[ModelVeloController::class, 'store']);
 Route::get('/editmodel/{model_Velo}',[ModelVeloController::class, 'edit']);
 Route::post('/updatemodel/{model_Velo}',[ModelVeloController::class, 'update']);
 Route::get('/models/remove/{model_Velo}',[ModelVeloController::class, 'destroy']);
+Route::get('/models/export',[ModelVeloController::class, 'export']);
+
 
 Route::get('/balades',[BaladeController::class, 'index']);
 Route::get('/balades/add',[BaladeController::class, 'create']);

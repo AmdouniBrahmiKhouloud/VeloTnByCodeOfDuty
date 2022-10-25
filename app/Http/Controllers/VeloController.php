@@ -7,6 +7,8 @@ use App\Models\Magasin;
 use App\Models\Model_Velo;
 use Illuminate\Http\Request;
 
+use App\Exports\VelosExport;
+use Maatwebsite\Excel\Facades\Excel;
 class VeloController extends Controller
 {
     /**
@@ -135,5 +137,10 @@ class VeloController extends Controller
         $velo->delete();
 
         return back()->with('message', 'item deleted successfully');
+    }
+
+    public function export() 
+    {
+        return Excel::download(new VelosExport, 'velos.xlsx');
     }
 }

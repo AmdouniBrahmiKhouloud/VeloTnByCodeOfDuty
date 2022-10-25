@@ -4,7 +4,11 @@
 <div class="container-xxl flex-grow-1 container-p-y">
 <div class="card">
     <h5 class="card-header">List of models</h5>
+    <div>
     <a href="/models/add"> <button class="btn btn-primary"> Add Model </button></a>
+    <a href="/models/export"> <button class="btn btn-primary"> Export Excel</button></a>
+
+    </div>
     <div class="table-responsive text-nowrap">
       <table class="table">
         <thead class="table-light">

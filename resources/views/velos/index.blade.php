@@ -4,7 +4,10 @@
 <div class="container-xxl flex-grow-1 container-p-y">
 <div class="card">
     <h5 class="card-header">Velo</h5>
+    <div>
     <a href="/velo/add"> <button class="btn btn-primary"> Add velo </button></a>
+    <a href="/velo/export"> <button class="btn btn-primary"> Export excel</button></a>
+    </div>
     <div class="table-responsive text-nowrap">
       <table class="table">
         <thead class="table-light">
