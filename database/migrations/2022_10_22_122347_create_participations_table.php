@@ -13,13 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('locations', function (Blueprint $table) {
+        Schema::create('participations', function (Blueprint $table) {
             $table->id();
-            $table->string('velo');
-            $table->dateTime('dateDebut');
-            $table->dateTime('dateFin');
-            $table->boolean('isPaid');
-            $table->boolean('status');
+            $table->string("nom");
+            $table->string("prenom");
+            $table->string("email");
+            $table->string("phone");
+            $table->string("note");
+            $table->unsignedBigInteger('eventID')->nullable();
+            $table->foreign('eventID')->references('id')->on('evenements')->onDelete('set null');
             $table->timestamps();
         });
     }
@@ -31,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('locations');
+        Schema::dropIfExists('participations');
     }
 };

@@ -1,10 +1,12 @@
 @extends('layouts.base')
-
+@section('title', 'Magasin')
 @section('body')
 <div class="container-xxl flex-grow-1 container-p-y">
 <div class="card">
-    <h5 class="card-header">List of magasin</h5>
-    <a href="/magasins/add"> <button class="btn btn-primary"> Add magasin </button></a>
+    <h3 class="card-header">Manage magasin 🏢 </h3>
+    <div class="card-body">
+        <a href="/magasins/add"> <button class="btn btn-primary"> Add magasin </button></a>
+    </div>
     <div class="table-responsive text-nowrap">
       <table class="table">
         <thead class="table-light">
@@ -19,7 +21,7 @@
                 <tr>
                     <td> {{$item->name}} </td>
                     <td> {{$item->location}} </td>
-                    <td> 
+                    <td>
                         <a class="" href="/editmagasin/{{$item->id}}"
                         ><i class="bx bx-edit-alt me-1"></i></a
                       >

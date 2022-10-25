@@ -19,7 +19,7 @@
     <meta name="description" content="" />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="assetsFront/images/logo.png" />
+    <link rel="icon" type="image/x-icon" href="{{asset('assetsFront/images/logo.png')}}" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -58,7 +58,7 @@
 
         <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
           <div class="app-brand demo">
-              <a class="app-brand-link" href="{{ url('/') }}" class="logo"><img src="assetsFront/images/logo.png"></a>
+              <a class="app-brand-link" href="{{ url('/') }}" class="logo"><img src="{{asset('assetsFront/images/logo.png')}}"></a>
             <a href="{{ url('/') }}" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
               <i class="bx bx-chevron-left bx-sm align-middle"></i>
             </a>
@@ -67,6 +67,13 @@
           <div class="menu-inner-shadow"></div>
 
           <ul class="menu-inner py-1">
+              <!--My Profile  -->
+              <li class="menu-item">
+                  <a href="{{ url('/profile') }}" class="menu-link">
+                      <i class='menu-icon tf-icons bx bx-user'></i>
+                      <div data-i18n="Analytics">Profile</div>
+                  </a>
+              </li>
             <!-- Dashboard -->
             <li class="menu-item">
               <a href="#" class="menu-link">
@@ -77,14 +84,14 @@
               <!-- Layouts -->
               <li class="menu-item">
                   <a href="{{ url('/location') }}" class="menu-link">
-                      <i class="menu-icon tf-icons bx bx-layout"></i>
-                      <div data-i18n="Layouts">Booking Cycles</div>
+                      <i class="menu-icon tf-icons bx bxs-cart-alt"></i>
+                      <div data-i18n="Layouts">Reservation</div>
                   </a>
               </li>
 
               <li class="menu-item">
                 <a href="/magasins" class="menu-link">
-                  <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                  <i class="menu-icon tf-icons bx bx-store-alt"></i>
                   <div data-i18n="Analytics">Magasins</div>
                 </a>
               </li>
@@ -98,35 +105,48 @@
 
             <li class="menu-item">
               <a href="/velo" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                <div data-i18n="Analytics">Velos</div>
+                <i class="menu-icon tf-icons bx bx-cycling"></i>
+                <div data-i18n="Analytics">Cycles</div>
               </a>
             </li>
             <li class="menu-item">
               <a href="/association" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <i class="menu-icon tf-icons bx bxs-home-heart"></i>
                 <div data-i18n="Analytics">Association</div>
               </a>
             </li>
             <li class="menu-item">
               <a href="/programmes" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <i class="menu-icon tf-icons bx bx-file"></i>
                 <div data-i18n="Analytics">Programmes</div>
               </a>
             </li>
 
             <li class="menu-item">
                 <a href="/evenements" class="menu-link">
+                  <i class="menu-icon tf-icons bx bxs-calendar-event"></i>
+                  <div data-i18n="Analytics">Events</div>
+                </a>
+              </li>
+
+              <li class="menu-item">
+                <a href="/participations" class="menu-link">
                   <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                  <div data-i18n="Analytics">Evenements</div>
+                  <div data-i18n="Analytics">Particpations</div>
                 </a>
               </li>
 
               <li class="menu-item">
                 <a href="/balades" class="menu-link">
-                  <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                  <div data-i18n="Analytics">Balades</div>
+                  <i class="menu-icon tf-icons bx bx-walk"></i>
+                  <div data-i18n="Analytics">Walks</div>
                 </a>
+              </li>
+              <li class="menu-item">
+                  <a href="#" class="menu-link">
+                      <i class="menu-icon tf-icons bx bx-credit-card"></i>
+                      <div data-i18n="Analytics">payment history </div>
+                  </a>
               </li>
           </ul>
         </aside>
@@ -141,7 +161,7 @@
             id="layout-navbar"
           >
             <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
-              <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
+              <a class="nav-item nav-link px-0 me-xl-4" href="#">
                 <i class="bx bx-menu bx-sm"></i>
               </a>
             </div>
@@ -182,8 +202,12 @@
                             </div>
                           </div>
                           <div class="flex-grow-1">
-                            <span class="fw-semibold d-block">John Doe</span>
-                            <small class="text-muted">Admin</small>
+                            <span class="fw-semibold d-block">{{Auth::user()->name}}</span>
+                            <small class="text-muted">
+                                @if(Auth::user()->role == '1')
+                                {{'Admin'}}
+                                @endif
+                            </small>
                           </div>
                         </div>
                       </a>
@@ -192,34 +216,24 @@
                       <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="#">
+                      <a class="dropdown-item" href="{{ url('/profile') }}">
                         <i class="bx bx-user me-2"></i>
                         <span class="align-middle">My Profile</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">
-                        <i class="bx bx-cog me-2"></i>
-                        <span class="align-middle">Settings</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">
-                        <span class="d-flex align-items-center align-middle">
-                          <i class="flex-shrink-0 bx bx-credit-card me-2"></i>
-                          <span class="flex-grow-1 align-middle">Billing</span>
-                          <span class="flex-shrink-0 badge badge-center rounded-pill bg-danger w-px-20 h-px-20">4</span>
-                        </span>
                       </a>
                     </li>
                     <li>
                       <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="">
+                      <a class="dropdown-item" href="{{ route('logout') }}"
+                         onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
                         <i class="bx bx-power-off me-2"></i>
                         <span class="align-middle">Log Out</span>
                       </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
                     </li>
                   </ul>
                 </li>

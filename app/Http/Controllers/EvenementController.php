@@ -19,13 +19,27 @@ class EvenementController extends Controller
         return view('evenements.index', compact('evenements'));
     }
 
-    /**
-     * Show the form for creating a new resource.
+        /**
+     * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function list()
     {
+        $evenements = Evenement::all();
+
+        return view('front.events', compact('evenements'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+  * @param  \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function create(Request $request)
+    {
+
         return view('evenements.create');
 
     }
@@ -38,7 +52,31 @@ class EvenementController extends Controller
      */
     public function store(Request $request)
     {
-        Evenement::create($request->all());
+        $this->validate($request, [
+            'title' => 'required',
+            'date' => 'required|date|after:today',
+            'time_debut' => 'required|before:time_fin',
+            'time_fin' => 'required|after:time_debut',
+            'nbr_place' => 'required|gt:2',
+            'prix' => 'required|gte:0',
+            'image' => 'required',
+            'description'=> 'required',
+        ]);
+
+        if ($request->hasFile('image')) {
+
+
+            $request->validate([
+                'image' => 'mimes:jpeg,bmp,png' // Only allow .jpg, .bmp and .png file types.
+            ]);
+            $imageName = time().'.'.$request->image->extension();
+            // Save the file locally in the storage/public/ folder under a new folder named /product
+            $request->image->move(public_path('images'), $imageName);
+
+
+            Evenement::create([...$request->all(), "image" => $imageName]);
+        }
+
 
         return redirect('/evenements');
     }
@@ -75,7 +113,31 @@ class EvenementController extends Controller
      */
     public function update(Request $request, Evenement $evenement)
     {
-        $evenement->update($request->all());
+        $this->validate($request, [
+            'title' => 'required',
+            'date' => 'required|date|after:today',
+            'time_debut' => 'required|before:time_fin',
+            'time_fin' => 'required|after:time_debut',
+            'nbr_place' => 'required|gt:2',
+            'prix' => 'required|gte:0',
+            'image' => 'required',
+            'description'=> 'required',
+        ]);
+        if ($request->hasFile('image')) {
+
+
+            $request->validate([
+                'image' => 'mimes:jpeg,bmp,png' // Only allow .jpg, .bmp and .png file types.
+            ]);
+            $imageName = time().'.'.$request->image->extension();
+            // Save the file locally in the storage/public/ folder under a new folder named /product
+            $request->image->move(public_path('images'), $imageName);
+            $evenement->update([...$request->all(), "image" => $imageName]);
+        }
+        else{
+            $evenement->update($request->all());
+
+        }
 
         return redirect('/evenements');
     }

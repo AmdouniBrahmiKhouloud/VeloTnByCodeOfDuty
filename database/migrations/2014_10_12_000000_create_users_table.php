@@ -17,6 +17,10 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('lastname');
+            $table->string('phone');
+            $table->string('region');
+            $table->string('address');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
@@ -24,9 +28,7 @@ return new class extends Migration
             $table->timestamps();
 //            $table->foreignIdFor(\App\Models\Association::class)
 //                ->nullable()->constrained();
-
-            $table->foreignId('association_id')->nullable()->constrained()->onDelete('cascade');
-
+           $table->foreignId('association_id')->nullable()->constrained()->onDelete('restrict');
 
         });
 

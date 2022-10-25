@@ -12,7 +12,16 @@
             <h5 class="mb-0">Edit Evenement</h5>
           </div>
           <div class="card-body">
-            <form method="POST" action="/updateevenement/{{$evenement->id}}">
+            @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+            <form method="POST" action="/updateevenement/{{$evenement->id}}" enctype="multipart/form-data">
                 @csrf
               <div class="row mb-3">
                 <label class="col-sm-2 col-form-label" for="basic-default-name">title</label>
@@ -50,25 +59,26 @@
               </div>
 
               <div class="row mb-3">
-                <label class="col-sm-2 col-form-label" for="basic-default-name">Nombre de participant</label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" name="nbr_participant" value="{{$evenement->nbr_participant}}" id="basic-default-name" placeholder="Nombre de participant" />
-                </div>
-              </div>
-
-              <div class="row mb-3">
                 <label class="col-sm-2 col-form-label" for="basic-default-name">Prix</label>
                 <div class="col-sm-10">
                   <input type="number" class="form-control" name="prix" id="basic-default-name" value="{{$evenement->prix}}" placeholder="Prix" />
                 </div>
               </div>
 
+
               <div class="row mb-3">
-                <label class="col-sm-2 col-form-label" for="basic-default-name">Descriptiont</label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" name="description" value="{{$evenement->description}}" id="basic-default-name" placeholder="description" />
+                  <label class="col-sm-2 col-form-label" for="basic-default-name">Descriptiont</label>
+                  <div class="col-sm-10">
+                      <input type="text" class="form-control" name="description" value="{{$evenement->description}}" id="basic-default-name" placeholder="description" />
+                    </div>
                 </div>
-              </div>
+
+                <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label" for="basic-default-name">Image</label>
+                  <div class="col-sm-10">
+                    <input type="file" name="image" value="/images/{{$evenement->image}}">
+                  </div>
+                </div>
 
               <div class="row justify-content-end">
                 <div class="col-sm-10">

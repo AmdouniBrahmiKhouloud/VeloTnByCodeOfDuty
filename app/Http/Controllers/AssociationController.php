@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Association;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Twilio\Rest\Client;
 
 class AssociationController extends Controller
 {
@@ -39,6 +40,14 @@ class AssociationController extends Controller
      */
     public function store(Request $request)
     {
+        // Form validation
+        $this->validate($request, [
+        'name' => 'required',
+        'type'=>'required',
+        'email' => 'required|email',
+        'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:8',
+        'adress' => 'required'
+    ]);
         Association::create($request->all());
         return redirect('/association');
     }
@@ -118,13 +127,29 @@ class AssociationController extends Controller
 
     public function addSelectedUserToAssociation(Association $association,  $user)
     {
+        $numb="+21629162035";
         //$association->users()->get()
         $user1 = User::find($user);
+
         $user1->association()->associate( $association);
         $user1->save();
+
+        $account_sid = getenv("TWILIO_SID");
+        $auth_token = getenv("TWILIO_AUTH_TOKEN");
+        $twilio_number = getenv("TWILIO_NUMBER");
+        $client = new Client($account_sid, $auth_token);
+        $client->messages->create($user1->phone,
+            ['from' => $twilio_number, 'body' => "vous etes affecté a une association"] );
+
+
         return redirect('/association');
     }
 
+    public function export()
+    {
+        return dd("ee");
+       // return Excel::download(new UsersExport, 'users.xlsx');
+    }
 
     public function listUsersPerAsssociation(Association $association)
     {

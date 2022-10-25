@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Model_Velo;
 use Illuminate\Http\Request;
-
+use App\Exports\ModelsExport;
+use Maatwebsite\Excel\Facades\Excel;
 class ModelVeloController extends Controller
 {
     /**
@@ -95,5 +96,10 @@ class ModelVeloController extends Controller
         $model_Velo->delete();
 
         return back()->with('message', 'item deleted successfully');
+    }
+
+    public function export() 
+    {
+        return Excel::download(new ModelsExport, 'models.xlsx');
     }
 }

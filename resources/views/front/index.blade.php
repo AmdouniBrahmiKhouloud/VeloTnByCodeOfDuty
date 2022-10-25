@@ -13,7 +13,7 @@
                      <h1 class="cycles_text">{{$item->reference}}</h1>
                      <p class="lorem_text">{{$item->description}}</p>
                      <div class="btn_main">
-                        <div class="buy_bt"><a href="#">Buy Now</a></div>
+                        <div class="buy_bt"><a href="/reservation/{{$item->id}}">Reserve now</a></div>
                         <h4 class="price_text">Price <span style=" color: #f7c17b">$</span> <span style=" color: #325662">{{$item->price}}</span></h4>
                      </div>
                   </div>

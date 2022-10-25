@@ -15,14 +15,17 @@ return new class extends Migration
     {
         Schema::create('associations', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+           /* $table->string('reference');
+            $table->string('type');
+            $table->integer('price');
+            $table->string('color');
+            $table->string('nbr_place');*/
             $table->string('name');
             $table->string('type');
             $table->string('email');
             $table->string('adress');
             $table->integer('phone');
-
-
+            $table->timestamps();
         });
     }
 

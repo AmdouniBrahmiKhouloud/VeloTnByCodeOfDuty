@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Velo extends Model
 {
     use HasFactory;
-    protected $guarded = [];  
-
+    protected $guarded = [];
+    public function locations()
+    {return $this->hasMany(Location::class);
+    }
 }

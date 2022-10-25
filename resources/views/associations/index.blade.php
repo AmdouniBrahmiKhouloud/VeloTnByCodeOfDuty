@@ -1,10 +1,12 @@
 @extends('layouts.base')
-
+@section('title', 'Associations')
 @section('body')
 <div class="container-xxl flex-grow-1 container-p-y">
 <div class="card">
-    <h5 class="card-header">List of Associations</h5>
-    <a href="/association/add"> <button class="btn btn-primary"> Add Associations </button></a>
+    <h3 class="card-header">Manage Associations 🗺️</h3>
+    <div class="card-body">
+        <a href="/association/add"> <button class="btn btn-primary"> Add Associations </button></a>
+    </div>
     <div class="table-responsive text-nowrap">
       <table class="table">
         <thead class="table-light">
