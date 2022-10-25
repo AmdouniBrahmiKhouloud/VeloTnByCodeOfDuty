@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CarteController;
 use App\Http\Controllers\LocationController;
+use App\Http\Controllers\StripeController;
 use App\Models\Location;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VeloController;
@@ -128,4 +129,9 @@ Route::get('/listUsersPerAsssociation/{association}',[AssociationController::cla
 Route::get('/postadd/{association}',[\App\Http\Controllers\PostController::class, 'create']);
 Route::post('/poststore/{association}',[\App\Http\Controllers\PostController::class, 'store']);
 
+/*
+ * Stripe
+ * */
+Route::get('stripe', [StripeController::class, 'stripe']);
+Route::post('stripe', [StripeController::class, 'stripePost'])->name('stripe.post');
 

@@ -1,5 +1,5 @@
 @extends('layouts.basefront')
-@section('title', 'Cycle')
+@section('title', 'Carte')
 @section('Content')
 <style>
     .clearfix {

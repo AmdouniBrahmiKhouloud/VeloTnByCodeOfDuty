@@ -16,4 +16,7 @@ class Location extends Model
     {
         return $this->belongsTo(Velo::class);
     }
+    public function Facture(){
+        return $this->belongsTo(Facture::class);
+    }
 }
