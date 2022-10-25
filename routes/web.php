@@ -106,3 +106,6 @@ Route::post('/evenements/store',[EvenementController::class, 'store']);
 Route::get('/editevenement/{evenement}',[EvenementController::class, 'edit']);
 Route::post('/updateevenement/{evenement}',[EvenementController::class, 'update']);
 Route::get('/evenement/remove/{evenement}',[EvenementController::class, 'destroy']);
+
+
+Route::get('/{balade}',[BaladeController::class, 'programmeByBalade']);

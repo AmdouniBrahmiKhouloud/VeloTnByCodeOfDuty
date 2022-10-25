@@ -163,4 +163,14 @@ class BaladeController extends Controller
 
         return view('front.balade', compact('balades'));
     }
+
+
+    public function programmeByBalade($id)
+    {
+        $balade= Balade::find($id);
+        $programmes = $balade->programmes()->get();
+
+        return view('front.programme', compact('programmes'));
+    }
+    
 }

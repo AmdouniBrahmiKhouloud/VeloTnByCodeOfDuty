@@ -10,4 +10,8 @@ class Programme extends Model
     use HasFactory;
     protected $guarded = [];  
 
+    public function balade()
+    {
+        return $this->belongsTo(balade::class);
+    }
 }
