@@ -193,6 +193,7 @@
 </div>
 <!-- copyright section end -->
 <!-- Javascript files-->
+@yield('javascript')
 <script src="{{asset('assetsFront/js/jquery.min.js')}}"></script>
 <script src="{{asset('assetsFront/js/bootstrap.bundle.min.js')}}"></script>
 <script src=""></script>

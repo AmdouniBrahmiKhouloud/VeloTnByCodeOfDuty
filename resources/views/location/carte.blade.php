@@ -401,7 +401,7 @@
 
             <div class="right">
                 <h1 class="total">Total: <span>{{$e + 8.2}}</span><span style=" color: #f7c17b">$</span></h1>
-                <a class="btn">Checkout</a>
+                <a class="btn" href="/carte/facture/{{$e + 8.2}}" >Checkout</a>
             </div>
 
         </div>

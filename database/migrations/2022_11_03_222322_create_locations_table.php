@@ -21,6 +21,8 @@ return new class extends Migration
             $table->boolean('isPaid');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('velo_id');
+            $table->unsignedBigInteger('facture_id')->nullable();
+            $table->foreign('facture_id')->references('id')->on('factures')->onDelete('set null');
             $table->foreign('user_id')->references('id')->on("users")->onDelete('cascade');
             $table->foreign('velo_id')->references('id')->on("velos")->onDelete('cascade');
             $table->timestamps();

@@ -8,12 +8,14 @@
                     <div class="col-sm-7">
                         <div class="card-body">
                             <h5 class="card-title text-primary">Welcome {{auth()->user()->name}}! 🎉</h5>
+                            @if(Auth::user()->role == '0')
                             <p class="mb-4">
                                 Your history of your reservations , if you want to add new reservations
                                 <span class="fw-bold">new reservations</span>
                             </p>
 
                             <a href="{{ url('/location/create') }}" class="btn btn-sm btn-outline-primary">New reservation</a>
+                            @endif
                         </div>
                     </div>
                     <div class="col-sm-5 text-center text-sm-left">
@@ -54,7 +56,7 @@
                         <td>{{$location->velo->reference}}</td>
                         <td>{{$location->date}}</td>
                         <td>{{$location->hours}}</td>
-                        <td>{{$location->price }} DT</td>
+                        <td>{{$location->price }}$ </td>
                         <td>
                             @if($location->isPaid)
                                 <span class="badge bg-label-success me-1">  {{ __('Paid') }}</span>
@@ -72,7 +74,7 @@
                             ><i class="bx bx-edit-alt me-1"></i></a
                             >
                             <a class="" href="/location/remove/{{$location->id}}"
-                            ><i class="bx bx-trash me-1"></i></a
+                            disabled="{{$location->isPaid}}"><i class="bx bx-trash me-1"></i></a
                             >
                         </td>
                     </tr>

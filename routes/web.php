@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CarteController;
+use App\Http\Controllers\FactureController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\StripeController;
 use App\Models\Location;
@@ -52,6 +53,7 @@ Route::get('/reservation/{idVelo}', function ($idVelo) {
 /*Carte*/
 Route::get('/carte',[CarteController::class, 'index'])->middleware('auth');
 Route::get('/carte/cancel/{location}',[CarteController::class, 'cancel'])->middleware('auth');
+Route::get('/carte/facture/{total}',[CarteController::class, 'facture']);
 
 /*Front reservation*/
 Route::post('/reservation/store/{idVelo}',[LocationController::class, 'storeFront'])->middleware('auth');
@@ -142,6 +144,11 @@ Route::post('/poststore/{association}',[\App\Http\Controllers\PostController::cl
 /*
  * Stripe
  * */
-Route::get('stripe', [StripeController::class, 'stripe']);
+Route::get('stripe/{id}', [StripeController::class, 'stripe']);
 Route::post('stripe', [StripeController::class, 'stripePost'])->name('stripe.post');
 
+/*
+ * Facture
+ * */
+Route::get('facture', [FactureController::class, 'index']);
+Route::get('/listLocationParFacture/{facture}',[FactureController::class, 'listLocationParFacture']);

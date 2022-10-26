@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Facture;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Stripe;
 class StripeController extends Controller
 {
-    public function stripe()
+    public function stripe(Request $request)
     {
-        return view('stripe');
+        $facture = Facture::find($request->id);
+        return view('stripe',compact('facture'));
     }
 
     /**
@@ -23,10 +26,9 @@ class StripeController extends Controller
             "amount" => 100 * 100,
             "currency" => "usd",
             "source" => $request->stripeToken,
-            "description" => "Test payment from tutsmake.com."
+            "description" => "Test payment from reservation."
         ]);
 
-        //Session::flash('success', 'Payment successful!');
-        return redirect('carte');
+        return redirect('/');
     }
 }

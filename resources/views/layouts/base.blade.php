@@ -74,13 +74,6 @@
                       <div data-i18n="Analytics">Profile</div>
                   </a>
               </li>
-            <!-- Dashboard -->
-            <li class="menu-item">
-              <a href="#" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                <div data-i18n="Analytics">Dashboard</div>
-              </a>
-            </li>
               <!-- Layouts -->
               <li class="menu-item">
                   <a href="{{ url('/location') }}" class="menu-link">
@@ -88,62 +81,72 @@
                       <div data-i18n="Layouts">Reservation</div>
                   </a>
               </li>
-
+              @if(Auth::user()->role == '1')
               <li class="menu-item">
                 <a href="/magasins" class="menu-link">
                   <i class="menu-icon tf-icons bx bx-store-alt"></i>
                   <div data-i18n="Analytics">Magasins</div>
                 </a>
               </li>
-
+              @endif
+              @if(Auth::user()->role == '1')
               <li class="menu-item">
                 <a href="/models" class="menu-link">
                   <i class="menu-icon tf-icons bx bx-home-circle"></i>
                   <div data-i18n="Analytics">Models</div>
                 </a>
               </li>
-
+              @endif
+              @if(Auth::user()->role == '1')
             <li class="menu-item">
               <a href="/velo" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-cycling"></i>
                 <div data-i18n="Analytics">Cycles</div>
               </a>
             </li>
+              @endif
+              @if(Auth::user()->role == '1')
             <li class="menu-item">
               <a href="/association" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-home-heart"></i>
                 <div data-i18n="Analytics">Association</div>
               </a>
             </li>
+              @endif
+              @if(Auth::user()->role == '1')
             <li class="menu-item">
               <a href="/programmes" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-file"></i>
                 <div data-i18n="Analytics">Programmes</div>
               </a>
             </li>
-
+              @endif
+              @if(Auth::user()->role == '1')
             <li class="menu-item">
                 <a href="/evenements" class="menu-link">
                   <i class="menu-icon tf-icons bx bxs-calendar-event"></i>
                   <div data-i18n="Analytics">Events</div>
                 </a>
               </li>
-
+              @endif
+                  @if(Auth::user()->role == '1')
               <li class="menu-item">
                 <a href="/participations" class="menu-link">
                   <i class="menu-icon tf-icons bx bx-home-circle"></i>
                   <div data-i18n="Analytics">Particpations</div>
                 </a>
               </li>
-
+              @endif
+              @if(Auth::user()->role == '1')
               <li class="menu-item">
                 <a href="/balades" class="menu-link">
                   <i class="menu-icon tf-icons bx bx-walk"></i>
                   <div data-i18n="Analytics">Walks</div>
                 </a>
               </li>
+              @endif
               <li class="menu-item">
-                  <a href="#" class="menu-link">
+                  <a href="/facture" class="menu-link">
                       <i class="menu-icon tf-icons bx bx-credit-card"></i>
                       <div data-i18n="Analytics">payment history </div>
                   </a>
